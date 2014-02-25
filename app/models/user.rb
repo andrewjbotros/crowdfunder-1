@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
 
   has_many :projects, dependent: :destroy
 
+  has_many :pledges
+  has_many :backed_projects, through: :pledges, source: 'project'
+
   # Bcrypt Password Digest Encryption
   has_secure_password
 
