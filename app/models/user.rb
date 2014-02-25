@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  has_many :projects, dependent: :destroy
+
   # Bcrypt Password Digest Encryption
   has_secure_password
 
