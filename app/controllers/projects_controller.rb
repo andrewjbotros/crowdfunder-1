@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project = current_user.projects.new
-    @project.breakpoints.build(amout: 0, description: "No Reward")
+    @project.breakpoints.build(amount: 0, description: "No Reward")
   end
 
   def create
