@@ -9,6 +9,8 @@
 </head>
 <body>
 
+  <%= render 'alerts/flash_message' %>
+
   <%= yield %>
 
   <div class="debug"><%= debug(params) %></div>
