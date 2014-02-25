@@ -15,4 +15,4 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'bcrypt'
+gem 'bcrypt-ruby'
