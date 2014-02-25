@@ -10,4 +10,8 @@ module ApplicationHelper
     page_title.empty? ? site_name : "#{site_name} | #{page_title}"
   end
 
+  def capitalize_word(str)
+    str.split(' ').map(&:capitalize).join(' ')
+  end
+
 end

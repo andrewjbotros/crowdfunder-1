@@ -4,7 +4,7 @@ module Session
 private
 
   def current_user
-    @current_user ||= User.find(token: User.encrypt(cookies[:token]))
+    @current_user ||= User.find_by(token: User.encrypt(cookies[:token]))
   end
 
   def current_user=(user)
