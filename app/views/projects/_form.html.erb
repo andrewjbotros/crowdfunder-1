@@ -1,4 +1,5 @@
 <%= form_for @project do |f| %>
+	<%= render 'alerts/error_message', object: @project %>
 	<%= f.label :name %>
 	<%= f.text_field :name %>
 	<%= f.label :description %>
@@ -12,5 +13,3 @@
 	<%= f.submit %>
 
 <% end %>
-
-<%= (params[:project][:start_date]).to_datetime.to_date %>
