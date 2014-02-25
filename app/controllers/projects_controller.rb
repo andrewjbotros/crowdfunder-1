@@ -49,7 +49,7 @@ private
     @project = Project.find(params[:id])
   end
 
-  def project_params
+  def project_param
     params.require(:project).permit(:name, :description, :goal, :start_date, :finish_date)
   end
 
