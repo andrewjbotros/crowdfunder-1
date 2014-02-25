@@ -3,6 +3,7 @@ class Project < ActiveRecord::Base
   belongs_to :user
 
   has_many :breakpoints, dependent: :destroy
+  accepts_nested_attributes_for :breakpoints
 
   validates :name,          presence: true
 
