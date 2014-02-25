@@ -1,3 +1,8 @@
 <h1><%= project.name %></h1>
 
 <p><%= project.description %></p>
+<p>We are looking for $<%= project.goal %></p>
+<p>Project opens at <%= project.start_date.to_date %></p>
+<p>Project closes at <%= project.finish_date.to_date %></p>
+<p><%= link_to "Delete this Project", @project, method: :delete %></P>
+<br>
