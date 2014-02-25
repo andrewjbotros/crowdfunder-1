@@ -1,28 +1,20 @@
-== README
+# CrowdFuner
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Iteration 1
 
-Things you may want to cover:
+As a Project Owner:
 
-* Ruby version
+* I want to be able to create a new project with a title and a description
 
-* System dependencies
+* I want to set a goal to my project
 
-* Configuration
+* I want to set a funding period (start date, finish date) for my project
 
-* Database creation
+* I want the ability to set funding breakpoints with a description of what backers will receive for each
 
-* Database initialization
+As a Backer:
 
-* How to run the test suite
+* I want to be able to back a project at a certain breakpoint
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+  > should be able to click on a breakpoint and have it submitted with no page refresh
+  > once submitted, upon success, the amount raised should update
