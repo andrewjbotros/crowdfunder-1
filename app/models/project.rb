@@ -22,25 +22,26 @@ private
 
   def verify_start_date
     if start_date.blank?
-      # msg
+      errors[:start_date] << "can't be blank"
     elsif !current_date?
-      # msg
+      errors[:start_date] << "must be present"
     elsif !near_future?
-      # msg
+      errors[:start_date] << "is too far away from now (within 30 days)"
     end
   end
 
   def verify_finish_date
     if finish_date.blank?
-      # msg
+      errors[:finish_date] << "can't be blank"
     elsif !after_start_date?
-
+      errors[:finish_date] << "must be after start date"
     elsif !project_max_length?
-
+      errors[:finish_date] << "can't be longer than 90 days"
     end
   end
 
-  def current_date?
+  def current_date?(date)
+    date.today?
   end
 
   def near_future?
