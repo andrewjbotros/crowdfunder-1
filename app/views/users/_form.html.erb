@@ -1,0 +1,42 @@
+<%= form_for @user, html: { class: "form-container" } do |f| %>
+  <legend class="form-title"><%= title %></legend>
+
+  <%= render 'alerts/error_message', object: @user %>
+
+  <div class="form-field">
+    <%= f.label :username, for: "user_username", class: "form-label" %>
+    <div class="form-control">
+      <%= f.text_field :username, class: "form-input" %>
+    </div>
+  </div>
+
+  <div class="form-field">
+    <%= f.label :email, for: "user_email", class: "form-label" %>
+    <div class="form-control">
+      <%= f.email_field :email, class: "form-input" %>
+    </div>
+  </div>
+
+  <div class="form-field">
+    <%= f.label :password, for: "user_password", class: "form-label" %>
+    <div class="form-control">
+      <%= f.password_field :password, class: "form-input" %>
+    </div>
+  </div>
+
+  <div class="form-field">
+    <%= f.label "Confirmation", for: "user_password_confirmation",
+        class: "form-label" %>
+    <div class="form-control">
+      <%= f.password_field :password_confirmation, class: "form-input" %>
+    </div>
+  </div>
+
+  <div class="form-field">
+    <div class="form-label"></div>
+    <div class="form-control">
+      <%= f.submit submit, class: "form-submit" %>
+    </div>
+  </div>
+
+<% end %>
