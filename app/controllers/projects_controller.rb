@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_action :signin_required, except: [:index, :show]
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -10,6 +11,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project = current_user.projects.new
+    @project.breakpoints.build(amout: 0, description: "No Reward")
   end
 
   def create
@@ -49,6 +51,13 @@ private
 
   def project_params
     params.require(:project).permit(:name, :description, :goal, :start_date, :finish_date)
+  end
+
+  def signin_required
+    unless signed_in?
+      flash[:info] = "Please signin first thank you!"
+      redirect_to :signin
+    end
   end
 
 end
