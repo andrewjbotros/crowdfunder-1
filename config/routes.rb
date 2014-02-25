@@ -1,5 +1,9 @@
 Crowdfunder::Application.routes.draw do
 
+  resources :projects do
+    resources :breakpoints
+  end
+
   get 'signin'          =>    'sessions#new',               as: :signin
   get 'signout'         =>    'sessions#destroy',           as: :signout
   resources :sessions, only: [:create]

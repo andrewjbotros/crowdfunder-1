@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
 
-  belongs_to :user
+  belongs_to :owner, class_name: 'user'
 
   has_many :breakpoints, dependent: :destroy
   # accepts_nested_attributes_for :breakpoints
