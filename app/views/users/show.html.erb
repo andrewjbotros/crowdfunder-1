@@ -1,0 +1,12 @@
+<% provide :page_title, @user.username %>
+
+<div class="user-profile">
+  <div class="user-gravatar">
+    <%= image_tag @user.gravatar, class: "gravatar" %>
+  </div>
+  <p class="username"><%= @user.username %></p>
+  <p class="email"><%= @user.email %></p>
+  <ul class="control">
+    <li><%= link_to 'edit', edit_user_path(@user), class: "control" %></li>
+  </ul>
+</div>
