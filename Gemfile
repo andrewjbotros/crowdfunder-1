@@ -16,3 +16,4 @@ group :doc do
 end
 
 gem 'bcrypt-ruby'
+gem 'better_errors'
