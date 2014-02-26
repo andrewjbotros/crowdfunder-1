@@ -1,3 +1,5 @@
+<% provide :page_title, "New Project" %>
+
 <div class="form">
-	<%= render 'form' %>
+	<%= render 'form', title: yield(:page_title), submit: "Create" %>
 </div>

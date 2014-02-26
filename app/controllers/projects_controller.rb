@@ -11,12 +11,12 @@ class ProjectsController < ApplicationController
 
   def new
     @project = current_user.projects.new
-    @project.breakpoints.build(amount: 0, description: "No Reward")
   end
 
   def create
     @project = current_user.projects.new(project_param)
     if @project.save
+      @project.breakpoints.create(amount: 0, description: "No Reward")
       flash[:success] = "Project has been created successfully"
       redirect_to @project
     else

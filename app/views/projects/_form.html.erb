@@ -1,15 +1,48 @@
-<%= form_for @project do |f| %>
+<%= form_for @project, html: { class: "form-container" } do |f| %>
+	<legend class="title"><%= title %></legend>
+
 	<%= render 'alerts/error_message', object: @project %>
-	<%= f.label :name %>
-	<%= f.text_field :name %>
-	<%= f.label :description %>
-	<%= f.text_area :description %>
-	<%= f.label :goal %>
-	<%= f.number_field :goal %>
-	<%= f.label :start_date %>
-	<%= f.date_field :start_date %>
-	<%= f.label :finish_date %>
-	<%= f.date_field :finish_date %>
-	<%= f.submit %>
+
+	<div class="form-field">
+		<%= f.label :name, for: 'project_name', class: "form-label" %>
+		<div class="form-control">
+			<%= f.text_field :name, class: "form-input" %>
+		</div>
+	</div>
+
+	<div class="form-field">
+		<%= f.label :description, for: 'project_description', class: "form-label" %>
+		<div class="form-control">
+			<%= f.text_area :description, class: "form-input" %>
+		</div>
+	</div>
+
+	<div class="form-field">
+		<%= f.label :goal, for: 'project_goal', class: "form-label" %>
+		<div class="form-control">
+			<%= f.number_field :goal, class: "form-input" %>
+		</div>
+	</div>
+
+	<div class="form-field">
+		<%= f.label :start_date, for: 'project_start_date', class: "form-label" %>
+		<div class="form-control">
+			<%= f.date_select :start_date, class: "form-input" %>
+		</div>
+	</div>
+
+	<div class="form-field">
+		<%= f.label :finish_date, for: 'project_finish_date', class: "form-label" %>
+		<div class="form-control">
+			<%= f.date_select :finish_date, class: "form-input" %>
+		</div>
+	</div>
+
+	<div class="form-field">
+		<div class="form-label"></div>
+		<div class="form-control">
+			<%= f.submit submit, class: "form-btn"  %>
+		</div>
+	</div>
 
 <% end %>

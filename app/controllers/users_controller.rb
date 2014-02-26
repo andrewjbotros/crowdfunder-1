@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      # signin @user
+      signin @user
       flash[:success] = "Your account has being created successfully"
       redirect_to @user
     else
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      #signin @user
+      signin @user
       flash[:success] = "Your account has being updated successfully"
       redirect_to @user
     else
