@@ -52,6 +52,10 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
+  def total_pledged
+    pledges.inject(0) { |sum, p| sum + p.amount }
+  end
+
 private
 
   # Generate and set user token before create
