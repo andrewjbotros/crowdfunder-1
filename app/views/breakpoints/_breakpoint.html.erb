@@ -2,3 +2,6 @@
 <h1>If you pledge $<%= breakpoint.amount %></h1>
 
 <p><%= breakpoint.description %></p>
+
+<p><%= link_to "Edit this breakpoint", edit_project_breakpoint_path(@project,breakpoint) %></p>
+<p><%= link_to "Remove this breakpoint", project_breakpoint_path(@project, breakpoint), method: :delete %></p>
