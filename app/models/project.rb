@@ -23,6 +23,15 @@ class Project < ActiveRecord::Base
   validate  :verify_start_date
   validate  :verify_finish_date
 
+  def has_backers?
+    !backers.empty?
+  end
+
+  def is_backer?(user)
+    backers.exists?(id: user.id)
+  end
+
+
 private
 
   def verify_start_date
