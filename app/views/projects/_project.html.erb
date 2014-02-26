@@ -1,4 +1,4 @@
-<h1><%= project.name %></h1>
+<h1><%=link_to project.name, project %></h1>
 
 <p><%= markdown(project.description) %></p>
 <p>We are looking for $<%= project.goal %></p>
