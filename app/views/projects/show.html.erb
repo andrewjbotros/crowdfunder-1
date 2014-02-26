@@ -1,4 +1,7 @@
 <%= render @project %>
+<% if current_user.backed_projects.find(@project) %>
+	<%= link_to "Change Your Pledge", edit_pledge_path(@project.pledges.find_by(user_id: current_user)) %>
+<% end %>
 <br>
 <% if @project.user == current_user %>
 <%= link_to "Create a New Breakpoint", new_project_breakpoint_path(@project) %>
