@@ -1,5 +1,5 @@
 class BreakpointsController < ApplicationController
-  before_action :find_project, only: [:show, :new, :create]
+  before_action :find_project
   before_action :set_breakpoint, only: [:edit, :update, :destroy]
 
   def show
@@ -32,7 +32,6 @@ class BreakpointsController < ApplicationController
   end
 
   def destroy
-    @project = @breakpoint.project
     @breakpoint.destroy
     redirect_to @project
   end
@@ -44,7 +43,7 @@ private
   end
 
   def set_breakpoint
-    @breakpoint = Breakpoint.find(params[:id])
+    @breakpoint = @project.breakpoints.find(params[:id])
   end
 
   def breakpoint_params
