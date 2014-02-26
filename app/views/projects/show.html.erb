@@ -1,6 +1,10 @@
+<% provide :page_title, @project.name %>
+
 <div id="project-<%= @project.id %>" class="project-page">
   <div class="project-name"><%= @project.name %></div>
-  <div class="project-owner">by <%= @project.owner.username %></div>
+  <div class="project-owner">
+    by <%= link_to @project.owner.username, @project.owner %>
+  </div>
   <div class="project-description"><%= markdown(@project.description) %></div>
   <div class="project-progress">
 
@@ -14,18 +18,21 @@
   </div>
   <div class="remaining-days"><%= @project.remaining_time %> to go</div>
 
+  <div class="project-owner-profile">
+    <legend class="title">Owner Profile</legend>
+    <%= image_tag @project.owner.gravatar(100), class: "gravatar" %>
+    <div class="owner-username"><%= @project.owner.username %></div>
+
+
+  </div>
+
 </div>
 
-
-<p>We are looking for $<%= @project.goal %></p>
-<p>Project opens at <%= @project.start_date.to_date %></p>
-<p>Project closes at <%= @project.finish_date.to_date %></p>
 <% if @project.owner == current_user %>
   <p><%= link_to "Edit this Project", edit_project_path(@project) %></P>
   <p><%= link_to "Delete this Project", @project, method: :delete %></P>
 <% end %>
-<br>
+
 <% if @project.owner == current_user %>
 <%= link_to "Create a New Breakpoint", new_project_breakpoint_path(@project) %>
 <% end %>
-<%= render @breakpoints %>
