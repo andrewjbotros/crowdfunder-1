@@ -6,6 +6,6 @@
 <p><%=  %></p>
 
 <% if breakpoint.project.user == current_user %>
-<p><%= link_to "Edit this breakpoint", edit_project_breakpoint_path(@project,breakpoint) %></p>
-<p><%= link_to "Remove this breakpoint", project_breakpoint_path(@project, breakpoint), method: :delete %></p>
+<p><%= link_to "Edit this breakpoint", edit_project_breakpoint_path(breakpoint.project, breakpoint) %></p>
+<p><%= link_to "Remove this breakpoint", project_breakpoint_path(breakpoint.project, breakpoint), method: :delete %></p>
 <% end %>
