@@ -1,0 +1,34 @@
+<% provide :page_title, "Back a Project" %>
+
+<div class="form">
+<%= form_for @pledge, html: { class: "form-container" } do |f| %>
+  <legend class="form-title">Pledge to <%= @pledge.breakpoint.project.name %></legend>
+
+  <%= render 'alerts/error_message', object: @pledge %>
+
+  <div class="form-field">
+    <%= f.label :amount, for: "pledge_amount", class: "form-label" %>
+    <div class="form-control">
+      <%= f.number_field :amount, class: "form-input" %>
+    </div>
+  </div>
+
+  <div class="form-field">
+    <%= f.collection_radio_buttons :breakpoint_id, @pledge.breakpoint.project.breakpoints, :id, :description do |b| %>
+    <div class="form-label"><%= b.radio_button %></div>
+    <div class="form-control">
+      <%= render 'pledges/breakpoint_selection', breakpoint: b.object %>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="form-field">
+    <div class="form-label"></div>
+      <div class="form-control">
+        <%= f.submit class: "form-btn" %>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+</div>

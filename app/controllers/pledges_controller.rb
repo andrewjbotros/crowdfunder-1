@@ -1,14 +1,18 @@
 class PledgesController < ApplicationController
 
   def new
-    @pledge = project.pledges.new
+
+    @breakpoint = Breakpoint.find(params[:breakpoint_id])
+    @pledge = @breakpoint.pledges.new()
   end
 
   def create
-    @pledge = current_user.pledges.new(pledge_param)
+
+    @pledge = Pledge.new(pledge_param)
+    @pledge.user = current_user
     if @pledge.save
       flash[:success] = "Thank you so much for backing up this project"
-      redirect_to @pledge.project
+      redirect_to @pledge.breakpoint.project
     else
       render :new
     end
@@ -24,6 +28,12 @@ class PledgesController < ApplicationController
 
   def destroy
 
+  end
+
+private
+
+  def pledge_param
+    params.require(:pledge).permit(:amount, :breakpoint_id)
   end
 
 end

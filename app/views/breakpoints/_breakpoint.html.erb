@@ -3,7 +3,7 @@
 
 <p><%= markdown(breakpoint.description) %></p>
 
-<p><%=  %></p>
+<p><%= link_to 'Back this project', new_pledge_path(breakpoint_id: breakpoint.id), class: 'btn' %></p>
 
 <% if breakpoint.project.user == current_user %>
 <p><%= link_to "Edit this breakpoint", edit_project_breakpoint_path(breakpoint.project, breakpoint) %></p>
