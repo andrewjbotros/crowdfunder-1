@@ -4,6 +4,8 @@
 <p>We are looking for $<%= project.goal %></p>
 <p>Project opens at <%= project.start_date.to_date %></p>
 <p>Project closes at <%= project.finish_date.to_date %></p>
-<p><%= link_to "Edit this Project", edit_project_path(project) %></P>
-<p><%= link_to "Delete this Project", project, method: :delete %></P>
+<% if project.user == current_user %>
+	<p><%= link_to "Edit this Project", edit_project_path(project) %></P>
+	<p><%= link_to "Delete this Project", project, method: :delete %></P>
+<% end %>
 <br>
