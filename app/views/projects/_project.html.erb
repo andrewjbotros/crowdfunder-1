@@ -1,11 +1,9 @@
-<h1><%=link_to project.name, project %></h1>
+<%= link_to project, class: "project-link" do %>
+<div id="project-<%= project.id %>" class="project">
+  <div class="project-name"><%= project.name %></div>
+  <div class="project-owner">by <%= project.owner.username %></div>
+  <div class="project-progress">
 
-<p><%= markdown(project.description) %></p>
-<p>We are looking for $<%= project.goal %></p>
-<p>Project opens at <%= project.start_date.to_date %></p>
-<p>Project closes at <%= project.finish_date.to_date %></p>
-<% if project.user == current_user %>
-	<p><%= link_to "Edit this Project", edit_project_path(project) %></P>
-	<p><%= link_to "Delete this Project", project, method: :delete %></P>
+  </div>
+</div>
 <% end %>
-<br>

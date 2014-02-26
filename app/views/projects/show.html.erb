@@ -1,9 +1,15 @@
-<%= render @project %>
-<% if current_user.backed_projects.find(@project) %>
-	<%= link_to "Change Your Pledge", edit_pledge_path(@project.pledges.find_by(user_id: current_user)) %>
+<h1><%=link_to @project.name, @project %></h1>
+
+<p><%= markdown(@project.description) %></p>
+<p>We are looking for $<%= @project.goal %></p>
+<p>Project opens at <%= @project.start_date.to_date %></p>
+<p>Project closes at <%= @project.finish_date.to_date %></p>
+<% if @project.owner == current_user %>
+  <p><%= link_to "Edit this Project", edit_project_path(@project) %></P>
+  <p><%= link_to "Delete this Project", @project, method: :delete %></P>
 <% end %>
 <br>
-<% if @project.user == current_user %>
+<% if @project.owner == current_user %>
 <%= link_to "Create a New Breakpoint", new_project_breakpoint_path(@project) %>
 <% end %>
 <%= render @breakpoints %>
