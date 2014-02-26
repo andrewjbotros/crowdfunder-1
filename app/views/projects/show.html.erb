@@ -12,9 +12,20 @@
 </div>
 
 <div class="project-sidebar">
-  <div class="number-of-backers"><%= @project.backers.count %> Backers</div>
+
+  <div class="project-backers">
+    <p class="number"><%= @project.backers.count %></p>
+    <small class="label">Backers</small>
+  </div>
+
+  <div class="project-total-pledged">
+    <input type="text" class="total-pledged-graph" value="<%= @project.percent_complete %>" data-min="0" data-max="100">
+  </div>
+  <p class="total">$ <%= @project.total_pledged %></p>
+    <p class="goal">$ <%= @project.goal %></p>
+
   <div class="total-pledged">
-    $ <%= @project.total_pledged %> pledged of $ <%= @project.goal %> goal
+    $ <%= @project.total_pledged %> pledged of  goal
   </div>
   <div class="remaining-days"><%= @project.remaining_time %> to go</div>
 
@@ -22,8 +33,18 @@
     <legend class="title">Owner Profile</legend>
     <%= image_tag @project.owner.gravatar(100), class: "gravatar" %>
     <div class="owner-username"><%= @project.owner.username %></div>
+    <div class="owner-contact"><%= mail_to @project.owner.email %></div>
+  </div>
 
-
+  <div class="project-breakpoints">
+    <% @project.breakpoints.each do |b| %>
+      <%= link_to pledges_path(pledge: { amount: b.amount, breakpoint_id: b.id }), method: :post, remote: true, class: 'pledge-btn', disabled: true do %>
+      <div class="breakpoint" id="breakpoint-<%= b.id %>">
+        <div class="amount">$ <%= b.amount %></div>
+        <div class="description"><%= markdown(b.description) %></div>
+      </div>
+      <% end %>
+    <% end %>
   </div>
 
 </div>
