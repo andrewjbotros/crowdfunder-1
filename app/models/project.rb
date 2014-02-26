@@ -5,6 +5,8 @@ class Project < ActiveRecord::Base
   has_many :breakpoints, dependent: :destroy
   accepts_nested_attributes_for :breakpoints
 
+  has_many :pledges, through: :breakpoints
+
   validates :name,          presence: true
 
   validates :description,   presence: true
@@ -32,7 +34,7 @@ private
     if finish_date.blank?
       errors[:finish_date] << "can't be blank"
     elsif !within_timeframe?(finish_date, start_date, 89)
-      errors[:finish_date] << "must be within 90 days from starting date"
+      errors[:finish_date] << "must be within 90 days from the starting date (#{start_date.to_date})"
     end
   end
 

@@ -1,5 +1,7 @@
 Crowdfunder::Application.routes.draw do
 
+  resources :pledges
+
   resources :projects do
     resources :breakpoints
   end

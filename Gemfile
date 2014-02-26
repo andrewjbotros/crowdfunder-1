@@ -17,3 +17,4 @@ end
 
 gem 'bcrypt-ruby'
 gem 'better_errors'
+gem 'redcarpet'
