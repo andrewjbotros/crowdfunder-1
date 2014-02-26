@@ -8,9 +8,16 @@ class Breakpoint < ActiveRecord::Base
   validates :amount,        presence: true,
                             numericality: {
                               only_integer: true,
-                              greater_than_or_equal_to: 0
+                              greater_than_or_equal_to: 0,
                             }
 
   validates :description,   presence: true
+  validate :valid_amount
+
+  def valid_amount
+  	if amount > project.goal
+  	errors[:base] << "Breakpoint amount cannot be greater than the project goal"
+  	end
+  end
 
 end
