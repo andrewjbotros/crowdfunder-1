@@ -7,8 +7,10 @@
 	<% if breakpoint.project.owner == current_user %>
 			<p><%= link_to "Edit this breakpoint", edit_project_breakpoint_path(breakpoint.project, breakpoint) %></p>
 			<p><%= link_to "Remove this breakpoint", project_breakpoint_path(breakpoint.project, breakpoint), method: :delete %></p>
-	<% else %>
-		<%= link_to 'Back this project', new_pledge_path(breakpoint_id: breakpoint.id), class: 'btn' %>
+	<% end %>
+
+	<% if !breakpoint.project.is_backer?(current_user) %>
+			<%= link_to 'Back this project', new_pledge_path(breakpoint_id: breakpoint.id), class: 'btn' %>
 	<% end %>
 
 <% end %>
