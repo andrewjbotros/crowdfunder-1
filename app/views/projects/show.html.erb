@@ -8,8 +8,11 @@
 </div>
 
 <div class="project-sidebar">
-  <div class="number-of-backers">
-    <%= @project.backers.count %> Backers</div>
+  <div class="number-of-backers"><%= @project.backers.count %> Backers</div>
+  <div class="total-pledged">
+    $ <%= @project.total_pledged %> pledged of $ <%= @project.goal %> goal
+  </div>
+  <div class="remaining-days"><%= @project.remaining_time %> to go</div>
 
 </div>
 
