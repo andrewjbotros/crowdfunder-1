@@ -7,7 +7,6 @@ class PledgesController < ApplicationController
   end
 
   def create
-
     @pledge = Pledge.new(pledge_param)
     @pledge.user = current_user
     if @pledge.save
@@ -19,11 +18,17 @@ class PledgesController < ApplicationController
   end
 
   def edit
-
+    @pledge = Pledge.find(params[:id])
   end
 
   def update
-
+    @pledge = Pledge.find(params[:id])
+    if @pledge.update(pledge_param)
+      flash[:success] = "Your pledge has been updated, thank you!"
+      redirect_to @pledge.breakpoint.project
+    else
+      render :edit
+    end
   end
 
   def destroy
