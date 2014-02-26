@@ -1,13 +1,36 @@
-@mixin btn($color, $background) {
-  position: relative;
-  text-decoration: none;
-  font-weight: 600;
-  padding: 5px 10px;
+@mixin animate($property: all, $duration: 0.5s, $easing: ease-in-out) {
+  -webkit-transition: $property $duration $easing;
+          transition: $property $duration $easing;
+}
+
+@mixin btn($color: rgba(200, 200, 200, 1)) {
+  display: inline-block;
   margin: 5px;
-  color: $color;
-  background: $background;
+  padding: 10px 15px;
+  border: none;
+  background: $color;
+  color: $color - 150;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1em;
+  -webkit-transition: all 0.3s ease-in-out;
+          transition: all 0.3s ease-in-out;
+  -webkit-appearance: none;
   &:hover {
-    color: $background;
-    background: $color;
+    background: $color - 150;
+    color: $color;
   }
+  &:first-of-type {
+    margin-left: 0px;
+  }
+  &:last-of-type {
+    margin-right: 0px;
+  }
+
+}
+
+a[class*='btn'] {
+  position: relative;
 }

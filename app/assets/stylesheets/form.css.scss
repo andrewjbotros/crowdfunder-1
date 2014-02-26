@@ -1,0 +1,60 @@
+@import 'mixin';
+
+@mixin form() {
+  .form-container {
+    display: block;
+    margin: 0 auto;
+    padding: 20px 40px;
+    width: 600px;
+    background: rgba(255, 255, 255, 1);
+
+    legend.form-title {
+      font-size: 2em;
+      font-weight: 800;
+      color: rgba(80, 80, 80, 1);
+      margin-bottom: 20px;
+    }
+
+    .form-field {
+      .form-label {
+        display: inline-block;
+        width: 100px;
+        text-align: right;
+        margin: 5px;
+        font-size: 1em;
+        font-weight: 100;
+      }
+      .form-control {
+        display: inline-block;
+        margin: 5px;
+
+        width: calc(100% - 130px);
+
+        input[type=text],
+        input[type=email],
+        input[type=password], {
+          font-size: 1em;
+          padding: 5px 10px;
+          width: 100%;
+          border: 1px solid rgba(80, 80, 80, 0.8);
+          color: rgba(80, 80, 80, 1);
+
+          &:hover, &:focus, &:active {
+            outline: none;
+            border: 1px solid rgba(125, 196, 222, 1);
+          }
+        }
+
+        .form-btn {
+          @include btn(rgba(240, 240, 240, 1));
+          font-size: 1em;
+          width: 49.45%;
+
+        }
+
+      }
+    }
+  }
+}
+
+.form { @include form; }
