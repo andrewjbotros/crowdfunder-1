@@ -6,7 +6,8 @@ class Pledge < ActiveRecord::Base
   validates :amount,        presence: true,
                             numericality: {
                               only_integer: true,
-                              greater_than_or_equal_to: :breakpoint_amount
+                              greater_than: 0,
+                              greater_than_or_equal_to: :breakpoint_amount,
                             }
 
   validates :breakpoint_id, presence: true
