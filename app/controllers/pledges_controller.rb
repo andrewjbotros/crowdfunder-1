@@ -1,7 +1,6 @@
 class PledgesController < ApplicationController
 
   def new
-
     @breakpoint = Breakpoint.find(params[:breakpoint_id])
     @pledge = @breakpoint.pledges.new()
   end
@@ -9,11 +8,17 @@ class PledgesController < ApplicationController
   def create
     @pledge = Pledge.new(pledge_param)
     @pledge.user = current_user
-    if @pledge.save
-      flash[:success] = "Thank you so much for backing up this project"
-      redirect_to @pledge.breakpoint.project
-    else
-      render :new
+    respond_to do |format|
+      if @pledge.save
+        format.html {
+          flash[:success] = "Thank you so much for backing up this project"
+          redirect_to @pledge.breakpoint.project
+        }
+        format.js
+      else
+        format.html { render :new }
+        format.js
+      end
     end
   end
 

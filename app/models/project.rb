@@ -44,6 +44,10 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def percent_complete
+    ((total_pledged.to_f / goal.to_f) * 100).to_i
+  end
+
 private
 
   def verify_start_date

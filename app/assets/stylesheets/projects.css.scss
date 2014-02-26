@@ -83,4 +83,14 @@ $red:     rgba(255, 121, 121, 0.8);
   padding: 20px 40px;
   width: calc(300px);
   background: rgba(255, 255, 255, 1);
+
+  .number-of-backers {
+
+  }
+
+
+  .pledged {
+    background: $green;
+    color:  $green - 100;
+  }
 }
