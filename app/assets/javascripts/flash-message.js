@@ -1,7 +1,6 @@
-$(document).on('page:load', function() {
+$(document).on('page:change', function() {
   if ($('[class*="flash"]').length) {
     $('[class*="flash"] .close').click(function(event) {
-      console.log($(this).parent())
       $(this).parent().animate({
         left: $(window).width()
       }, 500, 'easeInBack', function() {
