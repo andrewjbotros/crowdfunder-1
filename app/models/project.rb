@@ -7,6 +7,9 @@ class Project < ActiveRecord::Base
 
   has_many :pledges, through: :breakpoints
 
+  has_many :backers, through: :pledges, source: 'user'
+
+
   validates :name,          presence: true
 
   validates :description,   presence: true
