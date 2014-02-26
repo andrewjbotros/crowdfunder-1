@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).on('page:load', function() {
   if ($('[class*="flash"]').length) {
     $('[class*="flash"] .close').click(function(event) {
       console.log($(this).parent())
