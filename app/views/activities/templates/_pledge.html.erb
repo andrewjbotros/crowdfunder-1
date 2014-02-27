@@ -1,6 +1,15 @@
-<div class="feed-pledge">
-  <%= name_display(pledge.user) %>
-  have pledged $ <%= pledge.breakpoint.amount %>
-  toward <%= link_to pledge.breakpoint.project.name, pledge.breakpoint.project %>
-  <small class="time-ago"><%= time_ago_in_words(pledge.created_at) %> ago</small>
+<div class="pledge-feed">
+  <p>
+    <strong><%= name_display(pledge.user) %></strong>
+    pledged
+    <small class="amount">$ <%= pledge.breakpoint.amount %></small>  toward
+    <%= link_to pledge.breakpoint.project.name, pledge.breakpoint.project, class: 'project-link' %>
+    <small class="created">
+      <%= time_ago_in_words(pledge.created_at) %> ago
+    </small>
+  </p>
+
+
+
+
 </div>

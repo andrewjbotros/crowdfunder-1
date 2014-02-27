@@ -6,7 +6,7 @@
   <div class="user-feed">
     <h1 class="title">Activities</h1>
 
-    <div class="own-project">
+    <div class="own-projects">
     <% if @user.projects.any? %>
 
       <h2 class="title">Own Projects - <%= @user.projects.active.count %></h2>
@@ -31,7 +31,7 @@
     <% end %>
     </div>
 
-    <div class="backed-project">
+    <div class="backed-projects">
     <% if @user.pledges.any? %>
 
       <h2 class="title">Backed Projects - Total $ <%= @user.total_pledged %> </h2>

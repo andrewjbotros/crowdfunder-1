@@ -20,8 +20,8 @@ class Project < ActiveRecord::Base
                               greater_than: 0
                             }
 
-  validate  :verify_start_date
-  validate  :verify_finish_date
+  validate  :verify_start_date, on: :create
+  validate  :verify_finish_date, on: :create
 
   scope :active,    -> { where("start_date < ? AND finish_date > ?", Time.now.utc, Time.now.utc) }
   scope :inactive,  -> { where("finish_date < ?", Time.now.utc) }
@@ -46,10 +46,15 @@ class Project < ActiveRecord::Base
     starting_date = Time.now.utc > start_date ? Time.now.utc : start_date
     hours = (finish_date.end_of_day - starting_date) / 3600
     if hours > 24
-      return sprintf("%.0f", hours / 24) + "day".pluralize(hours / 24)
+      return sprintf("%.0f", hours / 24) + "day".pluralize((hours / 24).to_i)
     else
       sprintf("%.0f", hours) + "hour".pluralize(hours)
     end
+  end
+
+  def remaining_days
+    starting_date = Time.now.utc > start_date ? Time.now.utc : start_date
+    ((finish_date.end_of_day - starting_date) / 3600 / 24).round
   end
 
   def percent_complete
