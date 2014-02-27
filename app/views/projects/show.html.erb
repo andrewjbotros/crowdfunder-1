@@ -50,14 +50,20 @@
       </div>
       <% end %>
     <% end %>
-    <% else %>
-
+    <% if signed_in? && @project.is_backer?(current_user)%>
+      <%= link_to pledge_path(pledge: { amount: b.amount, breakpoint_id: b.id }), method: :patch, remote: true, class: 'pledge-btn', disabled: true do %>
+      <div class="breakpoint" id="breakpoint-<%= b.id %>">
+        <div class="amount">$ <%= b.amount %></div>
+        <div class="description"><%= markdown(b.description) %></div>
+      </div>
+      <% end %>
+    <% end %>
   <% end %>
   </div>
 
 </div>
 
-
+<%=  %>
 
 <% if @project.owner == current_user %>
   <p><%= link_to "Edit this Project", edit_project_path(@project) %></P>
