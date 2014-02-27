@@ -38,6 +38,7 @@
 
   <div class="project-breakpoints">
     <% @project.breakpoints.each do |b| %>
+    <% if signed_in? && @project.is_backer?(current_user) %>
       <%= link_to pledges_path(pledge: { amount: b.amount, breakpoint_id: b.id }), method: :post, remote: true, class: 'pledge-btn', disabled: true do %>
       <div class="breakpoint" id="breakpoint-<%= b.id %>">
         <div class="amount">$ <%= b.amount %></div>
@@ -45,6 +46,7 @@
       </div>
       <% end %>
     <% end %>
+  <% end %>
   </div>
 
 </div>
