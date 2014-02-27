@@ -3,13 +3,18 @@
 
 .user-page {
   padding: 20px;
-  h1.title {
-    @include black;
+  h1.title,
+  h2.title {
+    color:  $black;
     display: block;
     padding: 10px 0px;
     width: 100%;
     font-weight: 800;
     font-size: 2em;
+  }
+  h2.title {
+    font-size: 1.2em;
+    color: $black + 20;
   }
 }
 
@@ -24,7 +29,7 @@
     @include shadow;
     display: inline-block;
     padding: 5px 10px;
-    min-height: 200px;
+    min-height: 300px;
     width: 49%;
     border: 1px solid $black + 150;
     background: $white;

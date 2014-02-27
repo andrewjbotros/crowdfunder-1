@@ -5,22 +5,30 @@
     <h1 class="title">Feeds</h1>
     <div class="own-project">
     <% if @user.backed_projects.any? %>
-      <h1 class="title">Own Project</h1>
+
+      <h2 class="title">Own Project</h2>
+
     <% else %>
-      <h1 class="message">
+
+      <h2 class="message">
         Have an idea? <br>
         <%= link_to 'Create a project', new_project_path, class: 'btn' %>
-      </h1>
+      </h2>
+
     <% end %>
     </div>
     <div class="backed-project">
     <% if @user.pledges.any? %>
-      <h1 class="title">Backed Project</h1>
+
+      <h2 class="title">Backed Project</h2>
+
     <% else %>
-      <h1 class="message">
+
+      <h2 class="message">
         You haven't backed any project <br>
         <%= link_to 'Find a project you like', projects_path, class: "btn" %>
-      </h1>
+      </h2>
+
     <% end %>
     </div>
   </div>
@@ -29,8 +37,9 @@
     <h1 class="title">Profile</h1>
     <%= image_tag @user.gravatar(200), class: 'gravatar' %>
     <div class="username"><%= @user.username %></div>
-    <div class="member-since">
-      joined <%= time_ago_in_words(@user.created_at) %> ago
+    <div class="member-since">joined <%= time_ago_in_words(@user.created_at) %> ago</div>
+    <div class="total-pledge">
+      <small class="label">Total Pledged $</small> <%= @user.total_pledged %>
     </div>
   </div>
 </div>
