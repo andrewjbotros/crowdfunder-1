@@ -1,12 +1,21 @@
 <% provide :page_title, @user.username %>
 
+
 <div class="user-page">
+
   <div class="user-feed">
     <h1 class="title">Feeds</h1>
+
     <div class="own-project">
     <% if @user.backed_projects.any? %>
 
       <h2 class="title">Own Project</h2>
+
+      <ul class="feed">
+        <% @user.projects.each do |p| %>
+          <li><%= render "activities/templates/#{p.class.to_s.underscore}", project: p %></li>
+        <% end %>
+      </ul>
 
     <% else %>
 
@@ -17,6 +26,7 @@
 
     <% end %>
     </div>
+
     <div class="backed-project">
     <% if @user.pledges.any? %>
 
@@ -37,6 +47,7 @@
 
     <% end %>
     </div>
+
   </div>
 
   <div class="user-profile">
@@ -50,4 +61,3 @@
 
   </div>
 </div>
-
