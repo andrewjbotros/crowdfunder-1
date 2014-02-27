@@ -28,4 +28,8 @@ private
     !current_user.nil?
   end
 
+  def self?(user)
+    current_user == user
+  end
+
 end

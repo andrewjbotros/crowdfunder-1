@@ -26,6 +26,12 @@
 
       <h2 class="title">Backed Project</h2>
 
+      <ul class="feed">
+        <% @user.pledges.each do |p| %>
+          <li><%= render "activities/templates/#{p.class.to_s.underscore}", pledge: p %></li>
+        <% end %>
+      </ul>
+
     <% else %>
 
       <h2 class="message">
@@ -46,5 +52,6 @@
     <div class="total-pledge">
       <small class="label">Total Pledged $</small> <%= @user.total_pledged %>
     </div>
+
   </div>
 </div>
