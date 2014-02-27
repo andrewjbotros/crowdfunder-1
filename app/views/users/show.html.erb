@@ -1,11 +1,8 @@
 <% provide :page_title, @user.username %>
 
-
 <div class="user-page">
-
   <div class="user-feed">
     <h1 class="title">Feeds</h1>
-
     <div class="own-project">
     <% if @user.backed_projects.any? %>
 
@@ -20,7 +17,6 @@
 
     <% end %>
     </div>
-
     <div class="backed-project">
     <% if @user.pledges.any? %>
 
@@ -41,7 +37,6 @@
 
     <% end %>
     </div>
-
   </div>
 
   <div class="user-profile">
@@ -55,3 +50,4 @@
 
   </div>
 </div>
+

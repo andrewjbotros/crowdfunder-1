@@ -40,6 +40,8 @@
 
   <div class="project-breakpoints">
     <% @project.breakpoints.each do |b| %>
+
+    <% if signed_in? && !@project.is_backer?(current_user) %>
       <%= link_to pledges_path(pledge: { amount: b.amount, breakpoint_id: b.id }), method: :post, remote: true, class: 'pledge-btn', disabled: true do %>
       <div class="breakpoint" id="breakpoint-<%= b.id %>">
         <div class="amount">$ <%= b.amount %></div>
@@ -47,17 +49,25 @@
       </div>
       <% end %>
     <% end %>
+
+    <% if signed_in? && @project.is_backer?(current_user)%>
+      <%= link_to pledge_path(pledge: { amount: b.amount, breakpoint_id: b.id }, id: @project.pledges.where(user_id: current_user)[0].id), method: :patch, remote:true, class: 'pledge-btn', disabled: true do %>
+      <div class="breakpoint" id="breakpoint-<%= b.id %>">
+        <div class="amount">$ <%= b.amount %></div>
+        <div class="description"><%= markdown(b.description) %></div>
+      </div>
+      <% end %>
+    <% end %>
+  <% end %>
+
   </div>
 
 </div>
-
-
 
 <% if @project.owner == current_user %>
   <p><%= link_to "Edit this Project", edit_project_path(@project) %></P>
   <p><%= link_to "Delete this Project", @project, method: :delete %></P>
 <% end %>
-
 
 <% if @project.owner == current_user %>
 <%= link_to "Create a New Breakpoint", new_project_breakpoint_path(@project) %>
