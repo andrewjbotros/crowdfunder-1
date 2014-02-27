@@ -1,7 +1,9 @@
 @import 'mixin';
+@import 'color';
 
 @mixin form() {
   .form-container {
+
     display: block;
     margin: 0 auto;
     padding: 20px 40px;
@@ -9,49 +11,78 @@
     background: rgba(255, 255, 255, 1);
 
     legend.form-title {
-      font-size: 2em;
-      font-weight: 800;
-      color: rgba(80, 80, 80, 1);
       margin-bottom: 20px;
+      color: rgba(80, 80, 80, 1);
+      font-weight: 800;
+      font-size: 2em;
     }
 
     .form-field {
-      .form-label {
-        display: inline-block;
-        width: 100px;
-        text-align: right;
-        margin: 5px;
-        font-size: 1em;
-        font-weight: 100;
+      width: 100%;
+    }
+
+    .form-label,
+    .form-control {
+      display: inline-block;
+      margin: 5px;
+    }
+
+    .form-label {
+      width: 100px;
+      text-align: right;
+      font-weight: 100;
+      font-size: 0.8em;
+
+    }
+
+    .form-control {
+      width: calc(100% - 130px);
+
+      input,
+      select,
+      textarea {
+        @include animate;
+        @include black;
+        padding: 5px 10px;
+        width: 100%;
+        border: 1px solid rgba(80, 80, 80, 0.8);
+
+        &:hover, &:focus, &:active {
+          outline: none;
+          border: 1px solid $blue;
+        }
       }
-      .form-control {
+      textarea {
+        vertical-align: top;
+        resize: vertical;
+      }
+      select {
+        width: 32.8%;
+        outline: none;
+        border-radius: 0px;
+        -webkit-appearance: none;
+      }
+
+      .form-btn {
+        @include btn(rgba(240, 240, 240, 1));
+        width: 49.45%;
+      }
+    }
+  }
+  .form-container {
+    .form-field {
+      .field_with_errors {
         display: inline-block;
-        margin: 5px;
-
-        width: calc(100% - 130px);
-
-        input[type=text],
-        input[type=email],
-        input[type=password], {
-          font-size: 1em;
-          padding: 5px 10px;
-          width: 100%;
-          border: 1px solid rgba(80, 80, 80, 0.8);
-          color: rgba(80, 80, 80, 1);
-
-          &:hover, &:focus, &:active {
-            outline: none;
-            border: 1px solid rgba(125, 196, 222, 1);
-          }
+        .form-label {
+          font-weight: 400;
+          color: $red - 100;
         }
-
-        .form-btn {
-          @include btn(rgba(240, 240, 240, 1));
-          font-size: 1em;
-          width: 49.45%;
-
+      }
+      .form-control .field_with_errors {
+        width: 100%;
+        input, textarea, select {
+          border: 1px solid $red - 100;
         }
-
       }
     }
   }

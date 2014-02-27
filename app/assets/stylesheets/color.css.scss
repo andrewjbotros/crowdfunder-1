@@ -1,0 +1,18 @@
+$blue:    rgba(125, 196, 222, 0.8);
+$green:   rgba(164, 218, 173, 0.8);
+$yellow:  rgba(250, 236, 59, 0.8);
+$red:     rgba(255, 121, 121, 0.8);
+$white:   rgba(255, 255, 255, 1);
+$black:   rgba(80, 80, 80, 1);
+
+@mixin white($opacity: 1) {
+  color: rgba(255, 255, 255, $opacity);
+}
+
+@mixin black($opacity: 1) {
+  color: rgba(80, 80, 80, $opacity);
+}
+
+@mixin shadow($x: 0, $y: 0, $w: 6px, $b: -3px, $c: rgba(40, 40, 40, 0.5)) {
+  box-shadow: $x $y $w $b $c;
+}

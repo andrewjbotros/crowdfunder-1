@@ -1,40 +1,42 @@
+<div class="form">
+
 <%= form_for @project, html: { class: "form-container" } do |f| %>
-	<legend class="title"><%= title %></legend>
+	<legend class="form-title"><%= title %></legend>
 
 	<%= render 'alerts/error_message', object: @project %>
 
 	<div class="form-field">
 		<%= f.label :name, for: 'project_name', class: "form-label" %>
 		<div class="form-control">
-			<%= f.text_field :name, class: "form-input" %>
+			<%= f.text_field :name, class: "form-input", placeholder: "Give your project a name" %>
 		</div>
 	</div>
 
 	<div class="form-field">
 		<%= f.label :description, for: 'project_description', class: "form-label" %>
 		<div class="form-control">
-			<%= f.text_area :description, class: "form-input" %>
+			<%= f.text_area :description, class: "form-input", placeholder: "Describe your project . . . in markdown" %>
 		</div>
 	</div>
 
 	<div class="form-field">
 		<%= f.label :goal, for: 'project_goal', class: "form-label" %>
 		<div class="form-control">
-			<%= f.number_field :goal, class: "form-input" %>
+			<%= f.number_field :goal, class: "form-input", min: "1", placeholder: "What is your goal amount" %>
 		</div>
 	</div>
 
 	<div class="form-field">
 		<%= f.label :start_date, for: 'project_start_date', class: "form-label" %>
 		<div class="form-control">
-			<%= f.date_select :start_date, class: "form-input" %>
+			<%= f.date_select :start_date, class: "form-input", start_year: Time.now.year, end_year: Time.now.year + 1 %>
 		</div>
 	</div>
 
 	<div class="form-field">
 		<%= f.label :finish_date, for: 'project_finish_date', class: "form-label" %>
 		<div class="form-control">
-			<%= f.date_select :finish_date, class: "form-input" %>
+			<%= f.date_select :finish_date, class: "form-input", default: 1.day.from_now, start_year: Time.now.year, end_year: Time.now.year + 1 %>
 		</div>
 	</div>
 
@@ -42,7 +44,9 @@
 		<div class="form-label"></div>
 		<div class="form-control">
 			<%= f.submit submit, class: "form-btn"  %>
+			<%= link_to 'Back', :back, class: "form-btn" %>
 		</div>
 	</div>
 
 <% end %>
+</div>

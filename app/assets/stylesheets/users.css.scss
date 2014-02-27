@@ -1,0 +1,75 @@
+@import 'color';
+@import 'mixin';
+
+.user-page {
+  padding: 20px;
+  h1.title {
+    @include black;
+    display: block;
+    padding: 10px 0px;
+    width: 100%;
+    font-weight: 800;
+    font-size: 2em;
+  }
+}
+
+.user-feed {
+  display: inline-block;
+  min-height: 200px;
+  width: calc(100% - 250px);
+  vertical-align: top;
+
+  .own-project,
+  .backed-project {
+    @include shadow;
+    display: inline-block;
+    padding: 5px 10px;
+    min-height: 200px;
+    width: 49%;
+    border: 1px solid $black + 150;
+    background: $white;
+    vertical-align: top;
+
+    .message {
+      @include black;
+      margin-top: 40px;
+      text-align: center;
+      font-size: 1.2em;
+    }
+
+    a.btn {
+      @include btn($green);
+      margin-top: 20px;
+      font-size: 1em;
+    }
+  }
+  .own-project {
+
+  }
+  .backed-project {
+
+  }
+
+}
+
+.user-profile {
+  display: inline-block;
+
+  min-height: 200px;
+  width: 240px;
+  text-align: center;
+
+  .gravatar {
+    border: 5px solid $black + 150;
+  }
+  .username {
+    margin-bottom: 5px;
+    color: rgba(80, 80, 80, 1);
+    font-weight: 600;
+    font-size: 2em;
+  }
+  .member-since {
+    color: rgba(100, 100, 100, 1);
+    font-size: 1em;
+  }
+}

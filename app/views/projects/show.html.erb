@@ -35,7 +35,7 @@
     <legend class="title">Owner Profile</legend>
     <%= image_tag @project.owner.gravatar(150), class: "gravatar" %>
     <div class="owner-username"><%= @project.owner.username %></div>
-    <div class="owner-contact"><%= mail_to @project.owner.email %></div>
+    <div class="owner-contact"><%= mail_to @project.owner.email, 'Email Contact' %></div>
   </div>
 
   <div class="project-breakpoints">
