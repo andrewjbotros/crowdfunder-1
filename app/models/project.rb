@@ -38,9 +38,9 @@ class Project < ActiveRecord::Base
   def remaining_time
     hours = (finish_date.end_of_day - Time.now.utc) / 3600
     if hours > 24
-      return sprintf("%.0f", hours / 24) + " day".pluralize(hours / 24)
+      return sprintf("%.0f", hours / 24) + "day".pluralize(hours / 24)
     else
-      sprintf("%.0f", hours) + " hours".pluralize(hours)
+      sprintf("%.0f", hours) + "hour".pluralize(hours)
     end
   end
 

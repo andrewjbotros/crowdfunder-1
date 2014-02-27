@@ -21,12 +21,10 @@
 
   <div class="project-total-pledged">
      <div class="pledged-amount">
-      $ <%= @project.total_pledged %>
-      <small class="label">pledged of $ <%= @project.goal %></small>
+      <small class="label">Total pledged</small>
+      $<%= @project.total_pledged %>
+      <small class="label">of $ <%= @project.goal %> goal</small>
     </div>
-
-    <input type="text" class="pledged-graph" value="<%= @project.percent_complete %>" data-min="0" data-max="<%= @project.next_goal_level %>" data-width="100">
-
   </div>
 
   <div class="project-remaining">
@@ -35,7 +33,7 @@
 
   <div class="project-owner-profile">
     <legend class="title">Owner Profile</legend>
-    <%= image_tag @project.owner.gravatar(100), class: "gravatar" %>
+    <%= image_tag @project.owner.gravatar(150), class: "gravatar" %>
     <div class="owner-username"><%= @project.owner.username %></div>
     <div class="owner-contact"><%= mail_to @project.owner.email %></div>
   </div>
