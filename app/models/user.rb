@@ -37,6 +37,13 @@ class User < ActiveRecord::Base
 
   after_validation { self.errors.messages.delete(:password_digest) }
 
+  def total_pledged
+    pledges.inject(0) { |sum, p| sum + p.amount }
+  end
+
+
+
+
   # Retrieve Gravatar from gravatar.com using user email
   def gravatar(size = 60)
     return "https://secure.gravatar.com/avatar/#{Digest::MD5::hexdigest(email)}?s=#{size}"
@@ -50,10 +57,6 @@ class User < ActiveRecord::Base
   # Class Method: Encrypt Token
   def User.encrypt(token)
     Digest::SHA1.hexdigest(token.to_s)
-  end
-
-  def total_pledged
-    pledges.inject(0) { |sum, p| sum + p.amount }
   end
 
 private
