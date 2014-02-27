@@ -2,7 +2,7 @@
 
 $blue:    rgba(125, 196, 222, 0.8);
 $green:   rgba(164, 218, 173, 0.8);
-$yellow:  rgba(252, 249, 212, 0.8);
+$yellow:  rgba(250, 236, 59, 0.8);
 $red:     rgba(255, 121, 121, 0.8);
 
 .projects-page {
@@ -62,19 +62,19 @@ $red:     rgba(255, 121, 121, 0.8);
   vertical-align: top;
 
   .project-name {
-    text-align: right;
     margin-right: 10px;
+    text-align: right;
     font-weight: 800;
     font-size: 4em;
   }
   .project-owner {
-    text-align: right;
     padding-right: 20px;
+    text-align: right;
   }
   .project-description {
+    margin-top: 20px;
     padding: 20px;
     border: 1px solid rgba(200, 200, 200, 1);
-    margin-top: 20px;
   }
 }
 .project-sidebar {
@@ -84,8 +84,67 @@ $red:     rgba(255, 121, 121, 0.8);
   width: calc(300px);
   background: rgba(255, 255, 255, 1);
 
-  .number-of-backers {
+  .project-backers {
+    position: relative;
+    margin-bottom: 20px;
 
+    .backers {
+      position: relative;
+      display: block;
+      margin: 0px auto;
+      padding: 5px 10px ;
+      width: 2em;
+      background: $green + 100;
+      color: $green - 150;
+      text-align: center;
+      font-weight: 800;
+      font-size: 6em;
+      .label {
+        display: block;
+        color: $green - 50;
+        font-weight: 600;
+        font-size: 0.20em;
+      }
+    }
+  }
+
+  .project-total-pledged {
+    position: relative;
+    margin-bottom: 20px;
+    text-align: center;
+
+    .pledged-amount {
+      margin: 10px 10px;
+      margin-bottom: 30px;
+      padding: 5px;
+      background: $blue + 150;
+      color: $blue - 150;
+      font-weight: 800;
+      font-size: 4em;
+      .label {
+        display: block;
+        color: $blue - 50;
+        font-size: 0.20em;
+      }
+    }
+    .pledged-graph {
+
+    }
+
+  }
+
+  .project-remaining {
+    margin-bottom: 40px;
+    padding: 5px 10px;
+    color: $yellow;
+    text-align: center;
+    font-weight: 800;
+    font-size: 3em;
+    .label {
+      color: $yellow - 50;
+      display: block;
+      font-size: 0.35em;
+    }
   }
 
 

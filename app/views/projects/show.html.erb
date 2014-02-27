@@ -14,20 +14,24 @@
 <div class="project-sidebar">
 
   <div class="project-backers">
-    <p class="number"><%= @project.backers.count %></p>
-    <small class="label">Backers</small>
+    <p class="backers">
+      <%= @project.backers.count %><small class="label">Backers</small>
+    </p>
   </div>
 
   <div class="project-total-pledged">
-    <input type="text" class="total-pledged-graph" value="<%= @project.percent_complete %>" data-min="0" data-max="100">
-  </div>
-  <p class="total">$ <%= @project.total_pledged %></p>
-    <p class="goal">$ <%= @project.goal %></p>
+     <div class="pledged-amount">
+      $ <%= @project.total_pledged %>
+      <small class="label">pledged of $ <%= @project.goal %></small>
+    </div>
 
-  <div class="total-pledged">
-    $ <%= @project.total_pledged %> pledged of  goal
+    <input type="text" class="pledged-graph" value="<%= @project.percent_complete %>" data-min="0" data-max="<%= @project.next_goal_level %>" data-width="150">
+
   </div>
-  <div class="remaining-days"><%= @project.remaining_time %> to go</div>
+
+  <div class="project-remaining">
+    <%= @project.remaining_time %><small class="label">to go</small>
+  </div>
 
   <div class="project-owner-profile">
     <legend class="title">Owner Profile</legend>
@@ -48,6 +52,8 @@
   </div>
 
 </div>
+
+
 
 <% if @project.owner == current_user %>
   <p><%= link_to "Edit this Project", edit_project_path(@project) %></P>
