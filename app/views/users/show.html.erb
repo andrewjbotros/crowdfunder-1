@@ -4,12 +4,12 @@
 <div class="user-page">
 
   <div class="user-feed">
-    <h1 class="title">Feeds</h1>
+    <h1 class="title">Activities</h1>
 
-    <div class="own-project">
+    <div class="own-projects">
     <% if @user.projects.any? %>
 
-      <h2 class="title">Own Project</h2>
+      <h2 class="title">Own Projects - <%= @user.projects.active.count %></h2>
 
       <ul class="feed">
         <% @user.projects.each do |p| %>
@@ -19,18 +19,22 @@
 
     <% else %>
 
+      <% if self?(@user) %>
       <h2 class="message">
         Have an idea? <br>
         <%= link_to 'Create a project', new_project_path, class: 'btn' %>
       </h2>
+      <% else %>
+      <h2 class="message"><%= @user.username %> is still trying to come up with an idea</h2>
+      <% end %>
 
     <% end %>
     </div>
 
-    <div class="backed-project">
+    <div class="backed-projects">
     <% if @user.pledges.any? %>
 
-      <h2 class="title">Backed Project</h2>
+      <h2 class="title">Backed Projects - Total $ <%= @user.total_pledged %> </h2>
 
       <ul class="feed">
         <% @user.pledges.each do |p| %>
@@ -40,10 +44,14 @@
 
     <% else %>
 
+      <% if self?(@user) %>
       <h2 class="message">
         You haven't backed any project <br>
         <%= link_to 'Find a project you like', projects_path, class: "btn" %>
       </h2>
+      <% else %>
+      <h2 class="message"><%= @user.username %> has not yet backed any projects!</h2>
+      <% end %>
 
     <% end %>
     </div>
@@ -51,13 +59,10 @@
   </div>
 
   <div class="user-profile">
-    <h1 class="title">Profile</h1>
+    <h1 class="title">Profile <%= link_to_if self?(@user), '', edit_user_path(@user), class: "fa fa-info-circle" %></h1>
     <%= image_tag @user.gravatar(200), class: 'gravatar' %>
     <div class="username"><%= @user.username %></div>
     <div class="member-since">joined <%= time_ago_in_words(@user.created_at) %> ago</div>
-    <div class="total-pledge">
-      <small class="label">Total Pledged $</small> <%= @user.total_pledged %>
-    </div>
 
   </div>
 </div>

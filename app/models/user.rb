@@ -42,8 +42,6 @@ class User < ActiveRecord::Base
   end
 
 
-
-
   # Retrieve Gravatar from gravatar.com using user email
   def gravatar(size = 60)
     return "https://secure.gravatar.com/avatar/#{Digest::MD5::hexdigest(email)}?s=#{size}"

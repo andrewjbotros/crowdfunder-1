@@ -1,0 +1,90 @@
+@import 'color';
+@import 'mixin';
+
+.project-feed {
+  margin-bottom: 40px;
+
+  .control {
+    float: right;
+    li {
+      display: inline-block;
+      a {
+        color: $black + 50;
+        text-decoration: none;
+        &:hover {
+          color: $blue - 50;
+        }
+      }
+    }
+  }
+
+  .project-name {
+    font-size: 1em;
+    color: $blue - 50;
+    text-decoration: none;
+    font-weight: 800;
+  }
+
+  .created {
+    font-size: 0.8em;
+    color: $black + 50;
+  }
+
+  .project-summary {
+    margin-top: 10px;
+
+    .goal {
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: $black + 50;
+    }
+
+    canvas {
+      width: 100px;
+      height: 200px;
+      margin-bottom: -90px;
+    }
+
+    .backers-knob,
+    .totals-knob,
+    .time-to-go-knob {
+      display: inline-block;
+      font-size: 12px!important;
+      z-index: 5;
+    }
+  }
+}
+
+.pledge-feed {
+  margin-bottom: 15px;
+  font-size: 1em;
+  strong {
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+  small.amount {
+    display: inline-block;
+    font-size: 12px;
+    background: $blue - 50;
+    color: $blue + 100;
+    padding: 3px 6px;
+    width: 60px;
+    text-align: right;
+
+  }
+  .project-link {
+    color: $black;
+    letter-spacing: -1px;
+    &:hover {
+      color: $black - 50;
+      text-decoration: underline;
+    }
+  }
+  .created {
+    font-size: 0.8em;
+    color: $black + 50;
+    float: right;
+  }
+
+
+}
