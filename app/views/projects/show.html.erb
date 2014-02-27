@@ -14,15 +14,19 @@
 <div class="project-sidebar">
 
   <div class="project-backers">
-    <p class="backers">
-      <%= @project.backers.count %><small class="label">Backers</small>
+    <div class="backers">
+    <p id="backer-number">
+      <%= @project.backers.count %>
     </p>
+    <small class="label">Backers</small>
+    </div>
   </div>
 
   <div class="project-total-pledged">
      <div class="pledged-amount">
-      <small class="label">Total pledged</small>
+      <p id="pledged-amount-number">
       $<%= @project.total_pledged %>
+      </p>
       <small class="label">of $ <%= @project.goal %> goal</small>
     </div>
   </div>
@@ -51,7 +55,7 @@
     <% end %>
 
     <% if signed_in? && @project.is_backer?(current_user)%>
-      <%= link_to pledge_path(pledge: { amount: b.amount, breakpoint_id: b.id }, id: @project.pledges.where(user_id: current_user)[0].id), method: :patch, remote:true, class: 'pledge-btn', disabled: true do %>
+      <%= link_to pledge_path(pledge: { amount: b.amount, breakpoint_id: b.id }, id: @project.pledges.where(user_id: current_user)[0].id), method: :patch, remote: true, class: 'pledge-btn', disabled: true do %>
       <div class="breakpoint" id="breakpoint-<%= b.id %>">
         <div class="amount">$ <%= b.amount %></div>
         <div class="description"><%= markdown(b.description) %></div>
