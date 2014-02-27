@@ -1,28 +1,37 @@
 <% provide :page_title, @user.username %>
 
-<div class="user-profile">
-  <div class="user-gravatar">
-    <%= image_tag @user.gravatar, class: "gravatar" %>
+<div class="user-page">
+  <div class="user-feed">
+    <h1 class="title">Feeds</h1>
+    <div class="own-project">
+    <% if @user.backed_projects.any? %>
+      <h1 class="title">Own Project</h1>
+    <% else %>
+      <h1 class="message">
+        Have an idea? <br>
+        <%= link_to 'Create a project', new_project_path, class: 'btn' %>
+      </h1>
+    <% end %>
+    </div>
+    <div class="backed-project">
+    <% if @user.pledges.any? %>
+      <h1 class="title">Backed Project</h1>
+    <% else %>
+      <h1 class="message">
+        You haven't backed any project <br>
+        <%= link_to 'Find a project you like', projects_path, class: "btn" %>
+      </h1>
+    <% end %>
+    </div>
   </div>
-  <p class="username"><%= @user.username %></p>
-  <p class="email"><%= @user.email %></p>
-  <ul class="control">
-    <li><%= link_to 'edit', edit_user_path(@user), class: "control" %></li>
-  </ul>
+
+  <div class="user-profile">
+    <h1 class="title">Profile</h1>
+    <%= image_tag @user.gravatar(200), class: 'gravatar' %>
+    <div class="username"><%= @user.username %></div>
+    <div class="member-since">
+      joined <%= time_ago_in_words(@user.created_at) %> ago
+    </div>
+  </div>
 </div>
 
-<div class="user-projects">
-	<h1>Your Projects</h1>
-	<%= render @projects %>
-</div>
-
-<div id="total-money-pledged">
-  <p>You have pledged $<%= @user.total_pledged%> to projects on Crowdfunder</p>
-</div>
-<br>
-
-<div class="backed-projects">
-  <h1>Projects You have backed</h1>
-  <br>
-  <%= render @pledges %>
-</div>
