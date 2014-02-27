@@ -110,7 +110,6 @@ $red:     rgba(255, 121, 121, 0.8);
 
   .project-total-pledged {
     position: relative;
-    margin-bottom: 20px;
     text-align: center;
 
     .pledged-amount {
@@ -120,6 +119,7 @@ $red:     rgba(255, 121, 121, 0.8);
       background: $blue + 150;
       color: $blue - 150;
       font-weight: 800;
+
       font-size: 4em;
       .label {
         display: block;
@@ -128,20 +128,19 @@ $red:     rgba(255, 121, 121, 0.8);
       }
     }
     .pledged-graph {
-
+      font-size: 4em;
     }
-
   }
 
   .project-remaining {
     margin-bottom: 40px;
     padding: 5px 10px;
-    color: $yellow;
+    color: $red - 100;
     text-align: center;
     font-weight: 800;
     font-size: 3em;
     .label {
-      color: $yellow - 50;
+      color: $red - 50;
       display: block;
       font-size: 0.35em;
     }
