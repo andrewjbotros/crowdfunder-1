@@ -23,6 +23,13 @@ class Project < ActiveRecord::Base
   validate  :verify_start_date
   validate  :verify_finish_date
 
+  scope :active,    -> { where("start_date < ? AND finish_date > ?", Time.now.utc, Time.now.utc) }
+  scope :inactive,  -> { where("finish_date < ?", Time.now.utc) }
+
+  def funded?
+    percent_complete >= 100 ? true : false
+  end
+
   def has_backers?
     !backers.empty?
   end
@@ -36,7 +43,8 @@ class Project < ActiveRecord::Base
   end
 
   def remaining_time
-    hours = (finish_date.end_of_day - Time.now.utc) / 3600
+    starting_date = Time.now.utc > start_date ? Time.now.utc : start_date
+    hours = (finish_date.end_of_day - starting_date) / 3600
     if hours > 24
       return sprintf("%.0f", hours / 24) + "day".pluralize(hours / 24)
     else
@@ -46,10 +54,6 @@ class Project < ActiveRecord::Base
 
   def percent_complete
     ((total_pledged.to_f / goal.to_f) * 100).to_i
-  end
-
-  def next_goal_level
-    ((percent_complete.to_f / 50.to_f).ceil * 50).to_i
   end
 
 private
