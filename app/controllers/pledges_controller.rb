@@ -28,12 +28,19 @@ class PledgesController < ApplicationController
 
   def update
     @pledge = Pledge.find(params[:id])
+    respond_to do |format|
+
     if @pledge.update(pledge_param)
+      format.html {
       flash[:success] = "Your pledge has been updated, thank you!"
       redirect_to @pledge.breakpoint.project
+    }
+    format.js
     else
-      render :edit
+      format.html { render :edit }
+      format.js
     end
+   end
   end
 
   def destroy
