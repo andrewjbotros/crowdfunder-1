@@ -1,26 +1,29 @@
 $(document).on('page:change', function() {
 
 	if ($('.project-page').length) {
-		var breakpoints = $('.breakpoint'),
-				role = breakpoints.data('role');
-
-		if (role === 'backer') {
-			clickable(breakpoints, updatePledge)
-		}
-		else if (role === 'user') {
-			clickable(breakpoints, createPledge);
-		}
-		else if (role === 'guest') {
-			clickable(breakpoints, redirectToLogin);
-		}
-
+		clickable();
 	}
 
-	function clickable(breakpoints, actionToPerform) {
+	function clickable() {
+		var breakpoints = $('.breakpoint');
+
 		breakpoints.click(function(event) {
 			var _this = $(this);
-			actionToPerform(_this);
+			roleAction(_this);
 		});
+	}
+
+	function roleAction(breakpoint) {
+		var role = breakpoint.data('role');
+		if (role === 'backer') {
+			updatePledge(breakpoint);
+		}
+		else if (role === 'user') {
+			createPledge(breakpoint);
+		}
+		else if (role === 'guest') {
+			edirectToLogin(breakpoint);
+		}
 	}
 
 	function createPledge(breakpoint) {
