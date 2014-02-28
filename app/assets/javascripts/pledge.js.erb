@@ -1,0 +1,15 @@
+$(document).ready(function() {
+
+	$('.breakpoint').click (function() {
+		var _this = $(this)
+		$('.breakpoint').unbind('click')
+
+		$.ajax({
+			url: '/pledges',
+			type: 'POST',
+			dataType: 'script',
+			data: { pledge: { breakpoint_id: _this.data('breakpointId') } },
+		});
+	});
+
+});

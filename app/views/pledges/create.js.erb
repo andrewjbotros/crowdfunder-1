@@ -1,6 +1,3 @@
-$('.total-pledged-graph').val('<%= @pledge.breakpoint.project.percent_complete %>').trigger('change');
-$('#backer-number').text('<%= @pledge.breakpoint.project.backers.count %>')
-$('#pledged-amount-number').text('$<%= @pledge.breakpoint.project.total_pledged %>')
+$('#backer-number').text('<%= @pledge.breakpoint.project.backers.count %>');
+$('#pledged-amount-number').text('$<%= @pledge.breakpoint.project.total_pledged %>');
 $('#breakpoint-<%= @pledge.breakpoint.id %>').addClass('pledged');
-
-

@@ -8,6 +8,7 @@ class PledgesController < ApplicationController
   def create
     @pledge = Pledge.new(pledge_param)
     @pledge.user = current_user
+
     respond_to do |format|
       if @pledge.save
         format.html {

@@ -43,26 +43,34 @@
   </div>
 
   <div class="project-breakpoints">
+
+    <% if signed_in? && @project.owner != current_user && !@project.is_backer?(current_user) %>
+      <% @project.breakpoints.each do |b| %>
+        <div class="breakpoint" id="breakpoint-<%= b.id %>" data-breakpoint-id="<%= b.id %>">
+          <div class="amount">$ <%= b.amount %></div>
+          <div class="description"><%= markdown(b.description) %></div>
+        </div>
+        <% end %>
+    <% end %>
+
+    <% if signed_in? && @project.owner != current_user && @project.is_backer?(current_user) %>
+      <% @project.breakpoints.each do |b| %>
+        <div class="breakpoint-edit" id="breakpoint-<%= b.id %>" data-breakpoint-id="<%= b.id %>" data-amount="<%= b.amount %>" data-pledge="<%= @project.pledges.where(user_id: current_user)%>">
+          <div class="amount">$ <%= b.amount %></div>
+          <div class="description"><%= markdown(b.description) %></div>
+        </div>
+        <% end %>
+    <% end %>
+
+    <% if !signed_in? %>
     <% @project.breakpoints.each do |b| %>
-
-    <% if signed_in? && !@project.is_backer?(current_user) %>
-      <%= link_to pledges_path(pledge: { amount: b.amount, breakpoint_id: b.id }), method: :post, remote: true, class: 'pledge-btn', disabled: true do %>
-      <div class="breakpoint" id="breakpoint-<%= b.id %>">
+      <p><%= link_to "login", :signin %> to help back this project</p>
+      <div class="breakpoint-edit" id="breakpoint-<%= b.id %>">
         <div class="amount">$ <%= b.amount %></div>
         <div class="description"><%= markdown(b.description) %></div>
       </div>
       <% end %>
     <% end %>
-
-    <% if signed_in? && @project.is_backer?(current_user)%>
-      <%= link_to pledge_path(pledge: { amount: b.amount, breakpoint_id: b.id }, id: @project.pledges.where(user_id: current_user)[0].id), method: :patch, remote: true, class: 'pledge-btn', disabled: true do %>
-      <div class="breakpoint" id="breakpoint-<%= b.id %>">
-        <div class="amount">$ <%= b.amount %></div>
-        <div class="description"><%= markdown(b.description) %></div>
-      </div>
-      <% end %>
-    <% end %>
-  <% end %>
 
   <%= render 'project_breakpoints', project: @project %>
 
