@@ -1,4 +1,5 @@
 class PledgesController < ApplicationController
+  before_action :signin_required
 
   def new
     @breakpoint = Breakpoint.find(params[:breakpoint_id])

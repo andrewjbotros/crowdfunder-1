@@ -1,9 +1,7 @@
 class BreakpointsController < ApplicationController
+  before_action :signin_required, except: [:show]
   before_action :find_project
   before_action :set_breakpoint, only: [:edit, :update, :destroy]
-
-  def show
-  end
 
   def new
     @breakpoint = @project.breakpoints.new
@@ -40,6 +38,9 @@ private
 
   def find_project
     @project = Project.find(params[:project_id])
+    unless self?(@project.owner)
+      flash[:info] = "You are not authroized to perform the action"
+    end
   end
 
   def set_breakpoint

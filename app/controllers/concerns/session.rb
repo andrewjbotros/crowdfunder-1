@@ -32,4 +32,11 @@ private
     current_user == user
   end
 
+  def signin_required
+    unless signed_in?
+      flash[:info] = "Please signin first thank you!"
+      redirect_to :signin
+    end
+  end
+
 end
