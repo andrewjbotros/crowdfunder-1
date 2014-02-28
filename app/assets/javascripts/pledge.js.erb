@@ -1,21 +1,17 @@
 $(document).on('page:change', function() {
 
 	if ($('.project-page').length) {
-
 		var breakpoints = $('.breakpoint'),
 				role = breakpoints.data('role');
 
-		if (role === 'owner') {
-			alert('owner');
-		}
-		else if (role === 'backer') {
+		if (role === 'backer') {
 			clickable(breakpoints, updatePledge)
 		}
 		else if (role === 'user') {
 			clickable(breakpoints, createPledge);
 		}
 		else if (role === 'guest') {
-			alert('guest');
+			clickable(breakpoints, redirectToLogin);
 		}
 
 	}
@@ -37,24 +33,16 @@ $(document).on('page:change', function() {
 	}
 
 	function updatePledge(breakpoint) {
-
+		$.ajax({
+			url: '/pledges/' + breakpoint.data('pledgeId'),
+			type: 'PATCH',
+			dataType: 'script',
+			data: { pledge: { breakpoint_id: breakpoint.data('breakpointId') } }
+		})
 	}
 
-	// // Listen to click event on breakpoint div
-	// $('.breakpoint').on('click', function() {
-	// 	var _this = $(this);
-
-	// 	$.ajax({
-	// 		url: '/pledges',
-	// 		type: 'POST',
-	// 		dataType: 'script',
-	// 		data: {
-	// 			pledge: {
-	// 				breakpoint_id: _this.data('breakpointId')
-	// 			}
-	// 		}
-	// 	});
-
-	// });
+	function redirectToLogin(breakpoint) {
+		window.location.replace('/signin')
+	}
 
 });

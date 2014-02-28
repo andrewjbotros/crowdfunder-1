@@ -1,13 +1,13 @@
 <% if signed_in? && project.owner?(current_user) %>
-  <% role = 'owner' %>
+  <% data = { role: 'owner' } %>
 <% elsif signed_in? && project.backer?(current_user) %>
-  <% role = 'backer' %>
+  <% data = { role: 'backer', pledge_id: project.which_pledge(current_user).id } %>
 <% elsif signed_in? %>
-  <% role = 'user' %>
+  <% data = { role: 'user' } %>
 <% else %>
-  <% role = 'guest' %>
+  <% data = { role: 'guest' } %>
 <% end %>
 
 <% project.breakpoints.each do |b| %>
-  <%= render b, role: role %>
+  <%= render b, data: data %>
 <% end %>

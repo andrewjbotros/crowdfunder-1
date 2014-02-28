@@ -1,6 +1,6 @@
 <% provide :page_title, @project.name %>
 
-<div id="project-<%= @project.id %>" class="project-page">
+<div class="project-page" data-project-id="<%= @project.id %>">
   <div class="project-name"><%= @project.name %></div>
   <div class="project-owner">
     by <%= link_to @project.owner.username, @project.owner %>

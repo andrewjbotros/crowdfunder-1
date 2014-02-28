@@ -39,6 +39,10 @@ class Project < ActiveRecord::Base
     backers.exists?(id: user.id)
   end
 
+  def which_pledge(user)
+    pledges.find_by(user_id: user.id)
+  end
+
   def owner?(user)
     owner == user
   end

@@ -19,7 +19,7 @@ class Pledge < ActiveRecord::Base
   end
 
   def set_amount
-    self.amount = breakpoint.amount if self.amount.to_s.empty?
+    self.amount = breakpoint.amount
   end
 
 end
