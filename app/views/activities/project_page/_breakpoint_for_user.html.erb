@@ -1,0 +1,8 @@
+<!-- Project Breakpoints for User -->
+<div class="project-breakpoints">
+  <% project.breakpoints.each do |b| %>
+    <div class="breakpoint" data-breakpoint-id="<%= b.id %>">
+      <%= render b %>
+    </div>
+  <% end %>
+</div>
