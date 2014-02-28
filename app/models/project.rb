@@ -24,8 +24,8 @@ class Project < ActiveRecord::Base
   validate  :verify_start_date, on: :create
   validate  :verify_finish_date, on: :create
 
-  scope :active,    -> { where("start_date < ? AND finish_date > ?", Time.now.utc, Time.now.utc) }
-  scope :inactive,  -> { where("finish_date < ?", Time.now.utc) }
+  scope :active,    -> { where("start_date < ? AND finish_date > ?", Time.now, Time.now) }
+  scope :inactive,  -> { where("finish_date < ?", Time.now) }
 
   def funded?
     percent_complete >= 100 ? true : false
@@ -35,8 +35,12 @@ class Project < ActiveRecord::Base
     !backers.empty?
   end
 
-  def is_backer?(user)
+  def backer?(user)
     backers.exists?(id: user.id)
+  end
+
+  def owner?(user)
+    owner == user
   end
 
   def total_pledged
