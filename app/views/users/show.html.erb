@@ -13,7 +13,7 @@
 
       <ul class="feed">
         <% @user.projects.each do |p| %>
-          <li><%= render "activities/templates/#{p.class.to_s.underscore}", project: p %></li>
+          <li><%= render "activities/user_profile/#{p.class.to_s.underscore}", project: p %></li>
         <% end %>
       </ul>
 
@@ -38,7 +38,7 @@
 
       <ul class="feed">
         <% @user.pledges.each do |p| %>
-          <li><%= render "activities/templates/#{p.class.to_s.underscore}", pledge: p %></li>
+          <li><%= render "activities/user_profile/#{p.class.to_s.underscore}", pledge: p %></li>
         <% end %>
       </ul>
 

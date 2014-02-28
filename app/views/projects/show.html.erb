@@ -12,6 +12,7 @@
 </div>
 
 <div class="project-sidebar">
+  <%= render 'breakpoints/breakpoints', project: @project %>
 
   <div class="project-backers">
     <div class="backers">
@@ -44,7 +45,11 @@
 
   <div class="project-breakpoints">
 
-    <% if signed_in? && @project.owner != current_user && !@project.is_backer?(current_user) %>
+
+
+
+    <% if signed_in? && !@project.owner?(current_user) && !@project.backer?(current_user) %>
+
       <% @project.breakpoints.each do |b| %>
         <div class="breakpoint" id="breakpoint-<%= b.id %>" data-breakpoint-id="<%= b.id %>">
           <div class="amount">$ <%= b.amount %></div>
@@ -53,7 +58,7 @@
         <% end %>
     <% end %>
 
-    <% if signed_in? && @project.owner != current_user && @project.is_backer?(current_user) %>
+    <% if signed_in? && @project.owner != current_user && @project.backer?(current_user) %>
       <% @project.breakpoints.each do |b| %>
         <div class="breakpoint-edit" id="breakpoint-<%= b.id %>" data-breakpoint-id="<%= b.id %>" data-amount="<%= b.amount %>" data-pledge="<%= @project.pledges.where(user_id: current_user)%>">
           <div class="amount">$ <%= b.amount %></div>
@@ -72,7 +77,7 @@
       <% end %>
     <% end %>
 
-  <%= render 'project_breakpoints', project: @project %>
+
 
 
   </div>
