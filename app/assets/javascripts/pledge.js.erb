@@ -20,10 +20,10 @@ $(document).on('page:change', function() {
 
 	}
 
-	function clickable(breakpoints, performAction) {
+	function clickable(breakpoints, actionToPerform) {
 		breakpoints.click(function(event) {
 			var _this = $(this);
-			performAction(_this);
+			actionToPerform(_this);
 		});
 	}
 
