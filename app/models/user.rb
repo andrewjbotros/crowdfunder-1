@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   has_many :breakpoints, through: :pledges
   has_many :backed_projects, through: :breakpoints, source: 'project'
 
+  has_many :comments, as: :commentable
+
   # Bcrypt Password Digest Encryption
   has_secure_password
 

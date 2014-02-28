@@ -13,9 +13,6 @@ $(document).on('page:change', function() {
   }
 
   if ($('.project-feed').length) {
-    $('.knob').knob({
-
-    })
 
     $('.backers-knob').knob({
       'readOnly': true,
@@ -38,10 +35,9 @@ $(document).on('page:change', function() {
       'thickness': '0.50',
       'fgColor': 'rgba(80, 200, 200, 0.5)',
       'inputColor': 'rgba(75, 146, 182, 0.8)',
-      'draw': function() { $(this.i).val(this.cv + " day left") }
+      'draw': function() { $(this.i).val(this.cv + " days") }
     }).trigger('change');
   }
-
 
 
 });

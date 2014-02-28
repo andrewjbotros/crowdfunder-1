@@ -2,8 +2,6 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
 
   def show
-    @projects = current_user.projects
-    @pledges = current_user.pledges
   end
 
   def new

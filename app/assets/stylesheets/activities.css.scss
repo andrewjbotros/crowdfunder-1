@@ -19,15 +19,15 @@
   }
 
   .project-name {
-    font-size: 1em;
     color: $blue - 50;
     text-decoration: none;
     font-weight: 800;
+    font-size: 1em;
   }
 
   .created {
-    font-size: 0.8em;
     color: $black + 50;
+    font-size: 0.8em;
   }
 
   .project-summary {
@@ -35,41 +35,40 @@
 
     .goal {
       margin-bottom: 10px;
-      font-weight: 600;
       color: $black + 50;
+      font-weight: 600;
     }
 
     canvas {
+      margin-bottom: -90px;
       width: 100px;
       height: 200px;
-      margin-bottom: -90px;
     }
 
     .backers-knob,
     .totals-knob,
     .time-to-go-knob {
+      z-index: 5;
       display: inline-block;
       font-size: 12px!important;
-      z-index: 5;
     }
   }
 }
 
 .pledge-feed {
   margin-bottom: 15px;
-  font-size: 1em;
+  font-size: 0.9em;
   strong {
-    font-weight: 600;
     text-transform: capitalize;
+    font-weight: 400;
   }
   small.amount {
     display: inline-block;
-    font-size: 12px;
+    padding: 3px 6px 3px 10px;
     background: $blue - 50;
     color: $blue + 100;
-    padding: 3px 6px;
-    width: 60px;
     text-align: right;
+    font-size: 12px;
 
   }
   .project-link {
@@ -81,9 +80,12 @@
     }
   }
   .created {
-    font-size: 0.8em;
-    color: $black + 50;
+    position: relative;
     float: right;
+    color: $black + 50;
+    font-size: 0.8em;
+    letter-spacing: -1px;
+    top: 3px;
   }
 
 

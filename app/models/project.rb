@@ -9,6 +9,7 @@ class Project < ActiveRecord::Base
 
   has_many :backers, through: :pledges, source: 'user'
 
+  has_many :comments, as: :commentable
 
   validates :name,          presence: true
 
@@ -43,8 +44,7 @@ class Project < ActiveRecord::Base
   end
 
   def remaining_time
-    starting_date = Time.now.utc > start_date ? Time.now.utc : start_date
-    hours = (finish_date.end_of_day - starting_date) / 3600
+    hours = remaining_hours
     if hours > 24
       return sprintf("%.0f", hours / 24) + "day".pluralize((hours / 24).to_i)
     else
@@ -53,8 +53,12 @@ class Project < ActiveRecord::Base
   end
 
   def remaining_days
+    (remaining_hours / 24).round(1)
+  end
+
+  def remaining_hours
     starting_date = Time.now.utc > start_date ? Time.now.utc : start_date
-    ((finish_date.end_of_day - starting_date) / 3600 / 24).round
+    hours = (finish_date.end_of_day - starting_date) / 3600
   end
 
   def percent_complete

@@ -15,6 +15,7 @@
   h2.title {
     font-size: 1.2em;
     color: $black + 20;
+    margin-bottom: 10px;
   }
   h1 a, h2 a {
     color: $black + 20;
@@ -55,12 +56,6 @@
       font-size: 1em;
     }
   }
-  .own-projects {
-
-  }
-  .backed-projects {
-
-  }
 
 }
 
@@ -71,8 +66,13 @@
   width: 200px;
   text-align: center;
 
+  .info {
+    @include shadow;
+    padding: 10px 0px 50px;
+    background: $white;
+  }
   .gravatar {
-    border: 5px solid $black + 150;
+    border: 0px solid $black + 150;
   }
   .username {
     margin-bottom: 5px;

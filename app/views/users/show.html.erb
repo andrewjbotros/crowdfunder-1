@@ -60,9 +60,10 @@
 
   <div class="user-profile">
     <h1 class="title">Profile <%= link_to_if self?(@user), '', edit_user_path(@user), class: "fa fa-info-circle" %></h1>
-    <%= image_tag @user.gravatar(200), class: 'gravatar' %>
-    <div class="username"><%= @user.username %></div>
-    <div class="member-since">joined <%= time_ago_in_words(@user.created_at) %> ago</div>
-
+    <div class="info">
+      <%= image_tag @user.gravatar(180), class: 'gravatar' %>
+      <div class="username"><%= @user.username %></div>
+      <div class="member-since">joined <%= time_ago_in_words(@user.created_at) %> ago</div>
+    </div>
   </div>
 </div>

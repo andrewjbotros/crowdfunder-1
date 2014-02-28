@@ -1,0 +1,30 @@
+@import 'color';
+@import 'mixin';
+
+.welcome-page {
+  border-top: 1px solid $green - 100;
+  border-bottom: 1px solid $green - 100;
+  padding: 100px 40px;
+  text-align: right;
+  background: $green;
+
+  h1 {
+    font-size: 4em;
+    font-weight: 800;
+    color: $black;
+    text-shadow: 0 0 2px rgba(40, 40, 40, 0.5);
+  }
+
+  p {
+    font-size: 2em;
+    letter-spacing: -1px;
+    font-weight: 100;
+    color: $black;
+    margin-bottom: 10px;
+  }
+
+  .btn {
+    @include btn($green + 60);
+    width: 200px;
+  }
+}
