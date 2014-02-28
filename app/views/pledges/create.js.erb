@@ -1,5 +1,8 @@
+// After create, change data-role to backer and set according pledge id
 $('.breakpoint').attr('data-role', 'backer')
 $('.breakpoint').attr('data-pledge-id', '<%= @pledge.id %>')
+
 $('#backer-number').text('<%= @pledge.breakpoint.project.backers.count %>');
 $('#pledged-amount-number').text('$<%= @pledge.breakpoint.project.total_pledged %>');
-$('#breakpoint-<%= @pledge.breakpoint.id %>').addClass('pledged');
+
+$('.breakpoint[data-breakpoint-id=<%= @pledge.breakpoint.id %>]').addClass('pledged')

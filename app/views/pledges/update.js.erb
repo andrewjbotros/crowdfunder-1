@@ -1,4 +1,4 @@
-$('#backer-number').text('<%= @pledge.breakpoint.project.backers.count %>')
-$('#pledged-amount-number').text('$<%= @pledge.breakpoint.project.total_pledged %>')
-$('.breakpoint-edit').removeClass('pledged');
-$('#breakpoint-<%= @pledge.breakpoint.id %>').addClass('pledged');
+$('#backer-number').text('<%= @pledge.breakpoint.project.backers.count %>');
+$('#pledged-amount-number').text('$<%= @pledge.breakpoint.project.total_pledged %>');
+$('.breakpoint').removeClass('pledged')
+$('.breakpoint[data-breakpoint-id=<%= @pledge.breakpoint.id %>]').addClass('pledged')

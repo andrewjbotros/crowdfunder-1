@@ -6,28 +6,20 @@
     by <%= link_to @project.owner.username, @project.owner %>
   </div>
   <div class="project-description"><%= markdown(@project.description) %></div>
-  <div class="project-progress">
-
-  </div>
 </div>
 
 <div class="project-sidebar">
-  <%= render 'breakpoints/breakpoints', project: @project %>
 
   <div class="project-backers">
     <div class="backers">
-    <p id="backer-number">
-      <%= @project.backers.count %>
-    </p>
-    <small class="label">Backers</small>
+      <p id="backer-number"><%= @project.backers.count %></p>
+      <small class="label">Backers</small>
     </div>
   </div>
 
   <div class="project-total-pledged">
      <div class="pledged-amount">
-      <p id="pledged-amount-number">
-      $<%= @project.total_pledged %>
-      </p>
+      <p id="pledged-amount-number">$<%= @project.total_pledged %></p>
       <small class="label">of $ <%= @project.goal %> goal</small>
     </div>
   </div>
@@ -44,7 +36,7 @@
   </div>
 
   <div class="project-breakpoints">
-
+    <%= render 'breakpoints/breakpoints', project: @project %>
   </div>
 
 </div>

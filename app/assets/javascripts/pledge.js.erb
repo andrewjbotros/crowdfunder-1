@@ -1,20 +1,17 @@
 $(document).on('page:change', function() {
 
 	if ($('.project-page').length) {
-		clickable();
+		var breakpoints = $('.breakpoint');
+		clickable(breakpoints);
 	}
 
-	function clickable() {
-		var breakpoints = $('.breakpoint');
-
-		breakpoints.click(function(event) {
-			var _this = $(this);
-			roleAction(_this);
-		});
+	function clickable(breakpoints) {
+		breakpoints.click(function(event) { roleAction($(this)); });
 	}
 
 	function roleAction(breakpoint) {
 		var role = breakpoint.data('role');
+
 		if (role === 'backer') {
 			updatePledge(breakpoint);
 		}
