@@ -67,6 +67,10 @@
   .project-owner {
     padding-right: 20px;
     text-align: right;
+    a {
+      color: $blue - 50;
+      text-decoration: none;
+    }
   }
   .project-description {
     margin-top: 20px;
