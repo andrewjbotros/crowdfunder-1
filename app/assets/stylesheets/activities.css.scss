@@ -65,6 +65,7 @@
   small.amount {
     display: inline-block;
     padding: 3px 6px 3px 10px;
+    min-width: 40px;
     background: $blue - 50;
     color: $blue + 100;
     text-align: right;
@@ -81,11 +82,11 @@
   }
   .created {
     position: relative;
+    top: 3px;
     float: right;
     color: $black + 50;
-    font-size: 0.8em;
     letter-spacing: -1px;
-    top: 3px;
+    font-size: 0.8em;
   }
 
 
