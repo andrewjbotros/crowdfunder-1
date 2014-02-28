@@ -1,6 +1,3 @@
 $('#backer-number').text('<%= @pledge.breakpoint.project.backers.count %>');
 $('#pledged-amount-number').text('$<%= @pledge.breakpoint.project.total_pledged %>');
 $('#breakpoint-<%= @pledge.breakpoint.id %>').addClass('pledged');
-$('.breakpoint').removeClass('breakpoint').addClass('breakpoint-edit')
-
-

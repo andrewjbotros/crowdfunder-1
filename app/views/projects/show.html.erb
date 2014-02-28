@@ -46,7 +46,7 @@
 
     <% if signed_in? && @project.owner != current_user && !@project.is_backer?(current_user) %>
       <% @project.breakpoints.each do |b| %>
-        <div class="breakpoint" id="breakpoint-<%= b.id %>" data-breakpoint-id="<%= b.id %>" data-amount="<%= b.amount %>">
+        <div class="breakpoint" id="breakpoint-<%= b.id %>" data-breakpoint-id="<%= b.id %>">
           <div class="amount">$ <%= b.amount %></div>
           <div class="description"><%= markdown(b.description) %></div>
         </div>
@@ -55,7 +55,7 @@
 
     <% if signed_in? && @project.owner != current_user && @project.is_backer?(current_user) %>
       <% @project.breakpoints.each do |b| %>
-        <div class="breakpoint-edit" id="breakpoint-<%= b.id %>" data-breakpoint-id="<%= b.id %>" data-amount="<%= b.amount %>">
+        <div class="breakpoint-edit" id="breakpoint-<%= b.id %>" data-breakpoint-id="<%= b.id %>" data-amount="<%= b.amount %>" data-pledge="<%= @project.pledges.where(user_id: current_user)%>">
           <div class="amount">$ <%= b.amount %></div>
           <div class="description"><%= markdown(b.description) %></div>
         </div>
@@ -65,7 +65,7 @@
     <% if !signed_in? %>
     <% @project.breakpoints.each do |b| %>
       <p><%= link_to "login", :signin %> to help back this project</p>
-      <div class="breakpoint-edit" id="breakpoint-<%= b.id %>" data-breakpoint-id="<%= b.id %>" data-amount="<%= b.amount %>">
+      <div class="breakpoint-edit" id="breakpoint-<%= b.id %>">
         <div class="amount">$ <%= b.amount %></div>
         <div class="description"><%= markdown(b.description) %></div>
       </div>
