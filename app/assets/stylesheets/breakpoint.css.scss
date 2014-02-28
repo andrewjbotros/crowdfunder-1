@@ -12,9 +12,7 @@
     background: $white;
 
     &:hover {
-      transform: scale(1.1);
-      -webkit-transform: scale(1.1);
-      background: $red;
+      background: $yellow + 50;
     }
   }
 
@@ -34,8 +32,8 @@
       font-size: 3em;
     }
     .description {
-      font-size: 1em;
       color: $black;
+      font-size: 1em;
     }
   }
 

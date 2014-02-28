@@ -1,34 +1,13 @@
-
-<% path = "activities/project_page" %>
-
-<!-- Current User is the project owner
-  User should be able to see number of backers for
-  each breakpoint
--->
 <% if signed_in? && project.owner?(current_user) %>
-  <%= render "#{path}/breakpoint_for_owner", project: project %>
-
-<!-- Current User is the project backer
-  User should be able to see that he backed a breakpoint
--->
+  <% role = 'owner' %>
 <% elsif signed_in? && project.backer?(current_user) %>
-  <%= render "#{path}/breakpoint_for_backer", project: project %>
-
-
-<!-- Current User is not the owner or backer
-  User should be able to see the all the breakpoints for
-  the project and able to pledge to the breakpoint
--->
+  <% role = 'backer' %>
 <% elsif signed_in? %>
-  <%= render "#{path}/breakpoint_for_user", project: project %>
-
-
-<!-- Guest User
-  User should be able to see the all the breakpoints for
-  the project and redirect to the signin page if tried to
-  pledge
- -->
+  <% role = 'user' %>
 <% else %>
-  <%= render "#{path}/breakpoint_for_guest", project: project %>
+  <% role = 'guest' %>
+<% end %>
 
+<% project.breakpoints.each do |b| %>
+  <%= render b, role: role %>
 <% end %>

@@ -1,15 +1,60 @@
-$(document).ready(function() {
+$(document).on('page:change', function() {
 
-	$('.breakpoint').click (function() {
-		var _this = $(this)
-		$('.breakpoint').unbind('click')
+	if ($('.project-page').length) {
 
+		var breakpoints = $('.breakpoint'),
+				role = breakpoints.data('role');
+
+		if (role === 'owner') {
+			alert('owner');
+		}
+		else if (role === 'backer') {
+			clickable(breakpoints, updatePledge)
+		}
+		else if (role === 'user') {
+			clickable(breakpoints, createPledge);
+		}
+		else if (role === 'guest') {
+			alert('guest');
+		}
+
+	}
+
+	function clickable(breakpoints, performAction) {
+		breakpoints.click(function(event) {
+			var _this = $(this);
+			performAction(_this);
+		});
+	}
+
+	function createPledge(breakpoint) {
 		$.ajax({
 			url: '/pledges',
 			type: 'POST',
 			dataType: 'script',
-			data: { pledge: { breakpoint_id: _this.data('breakpointId') } },
-		});
-	});
+			data: { pledge: { breakpoint_id: breakpoint.data('breakpointId') } }
+		})
+	}
+
+	function updatePledge(breakpoint) {
+
+	}
+
+	// // Listen to click event on breakpoint div
+	// $('.breakpoint').on('click', function() {
+	// 	var _this = $(this);
+
+	// 	$.ajax({
+	// 		url: '/pledges',
+	// 		type: 'POST',
+	// 		dataType: 'script',
+	// 		data: {
+	// 			pledge: {
+	// 				breakpoint_id: _this.data('breakpointId')
+	// 			}
+	// 		}
+	// 	});
+
+	// });
 
 });
