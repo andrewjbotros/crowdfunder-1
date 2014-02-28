@@ -1,0 +1,42 @@
+@import 'color';
+@import 'mixin';
+
+.project-breakpoints {
+
+  .breakpoint {
+    @include animate;
+    @include shadow;
+    margin: 10px 0px;
+    padding: 10px 20px;
+    border: 3px solid $black + 150;
+    background: $white;
+
+    &:hover {
+      transform: scale(1.1);
+      -webkit-transform: scale(1.1);
+      background: $red;
+    }
+  }
+
+  .detail {
+    position: relative;
+    margin-top: 10px;
+
+    .amount {
+      position: relative;
+      display: block;
+      margin-bottom: 10px;
+      padding: 5px 10px;
+      background: $red - 100;
+      color: $white;
+      text-align: right;
+      font-weight: 800;
+      font-size: 3em;
+    }
+    .description {
+      font-size: 1em;
+      color: $black;
+    }
+  }
+
+}
