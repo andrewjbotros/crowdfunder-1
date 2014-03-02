@@ -3,9 +3,9 @@
 <ul class="menu">
   <% if current_user.projects.any? %>
     <li><%= link_to 'My Projects', user_projects_path(current_user), class: "btn wide" %></li>
-  <% else %>
-    <li><%= link_to 'Create a Project', '#', class: "btn wide" %></li>
   <% end %>
+  <li><%= link_to 'Create a Project', new_user_project_path(current_user), class: "btn wide" %></li>
+
   <% if current_user.backed_projects.any? %>
     <li><%= link_to 'Backed Projects', '#', class: "btn wide" %></li>
   <% end %>

@@ -1,0 +1,18 @@
+@import 'color';
+@import 'mixin';
+
+.users-projects {
+  margin: 0px 40px;
+
+  .title {
+    font-size: 2em;
+    margin-bottom: 20px;
+    font-weight: 800;
+    color: $black;
+  }
+
+  .project-feed {
+    background: $white;
+    padding: 20px 40px;
+  }
+}

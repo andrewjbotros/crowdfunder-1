@@ -1,0 +1,6 @@
+<ul class="users-projects">
+<legend class="title">My Own Projects</legend>
+<% @projects.each do |p| %>
+  <li> <%= render 'users/projects/project', project: p %></li>
+<% end %>
+</ul>

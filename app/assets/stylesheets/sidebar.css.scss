@@ -7,6 +7,7 @@ $menu-width: 240px + $border-width;
 #site-menu {
   @include shadow(1px, 0px, 6px, -2px, rgba(40, 40, 40, 0.5));
   position: fixed;
+  top: 0px;
   left: $border-width - $menu-width;
   z-index: 10;
   display: block;
@@ -75,9 +76,9 @@ $menu-width: 240px + $border-width;
 
   .user-profile {
     display: block;
-    width: 100%;
 
     padding: 0px 0px 0px 0px;
+    width: 100%;
     text-align: center;
 
     .title {
