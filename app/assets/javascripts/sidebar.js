@@ -22,7 +22,7 @@ function SiteMenu() {
       slideAnimate('0');
     }
     else {
-      slideAnimate('-200');
+      slideAnimate('-260');
     }
   };
 
@@ -32,9 +32,9 @@ function SiteMenu() {
 
   function clickEvent(btn) {
     btn.on('click', function() {
-      $(this).unbind('click');
+      // $(this).unbind('click');
       slideToggle();
-      clickEvent(clickableArea());
+      // clickEvent(clickableArea());
     })
   }
 
