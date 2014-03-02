@@ -2,11 +2,11 @@
 @import 'mixin';
 
 .welcome-page {
-  border-top: 1px solid $green - 100;
-  border-bottom: 1px solid $green - 100;
-  padding: 100px 40px;
+  border-top: 1px solid $white - 100;
+  border-bottom: 1px solid $white - 100;
+  padding: 100px 100px;
   text-align: right;
-  background: $green;
+  background: $white;
 
   h1 {
     font-size: 4em;
@@ -24,7 +24,7 @@
   }
 
   .btn {
-    @include btn($green + 60);
-    width: 200px;
+    @include btn($blue);
+    width: 210px;
   }
 }

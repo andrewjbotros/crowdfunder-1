@@ -9,13 +9,14 @@
 </head>
 <body>
 
-  <%= render 'header/index' %>
+  <%= render 'sidebar/index' %>
 
-  <%= render 'alerts/flash_message' %>
+  <div class="content">
+    <%= render 'alerts/flash_message' %>
+    <%= yield %>
+  </div>
 
-  <%= yield %>
 
-  <div class="debug"><%= debug(params) %></div>
 
 </body>
 </html>

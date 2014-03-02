@@ -58,30 +58,3 @@
   }
 
 }
-
-.user-profile {
-  display: inline-block;
-
-  min-height: 200px;
-  width: 200px;
-  text-align: center;
-
-  .info {
-    @include shadow;
-    padding: 10px 0px 50px;
-    background: $white;
-  }
-  .gravatar {
-    border: 0px solid $black + 150;
-  }
-  .username {
-    margin-bottom: 5px;
-    color: rgba(80, 80, 80, 1);
-    font-weight: 600;
-    font-size: 2em;
-  }
-  .member-since {
-    color: rgba(100, 100, 100, 1);
-    font-size: 1em;
-  }
-}

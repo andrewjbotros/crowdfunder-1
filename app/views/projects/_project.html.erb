@@ -1,13 +1,8 @@
-<%= link_to project, class: "project-link" do %>
 
-<div id="project-<%= project.id %>" class="project">
-  <div class="project-name"><%= project.name %></div>
-  <div class="project-owner">by <%= project.owner.username %></div>
-  <% project.tags do |tag| %>
-  <% end %>
-
-  <div class="project-progress">
-
-  </div>
+<div class="project-summary" data-project-id="<%= project.id %>">
+  <%= link_to project.name, project, class: "project-title" %>
+  <small class="owner">by <%= link_to project.owner.username, project.owner %></small>
+  <%= image_tag '/assets/default-project-thumbnail.jpg', class: "project-thumbnail" %>
+  <div class="progress" data-percent-complete="<%= project.percent_complete %>"></div>
+  <div class="description"><%= markdown(project.description) %></div>
 </div>
-<% end %>

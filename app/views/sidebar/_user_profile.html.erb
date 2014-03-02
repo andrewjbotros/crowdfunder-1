@@ -1,0 +1,11 @@
+<div class="user-profile">
+  <h1 class="title">
+    <%= link_to 'Profile', current_user %>
+    <%= link_to '', edit_user_path(current_user), class: "fa fa-info-circle" %>
+  </h1>
+  <div class="info">
+    <%= image_tag current_user.gravatar(140), class: 'gravatar' %>
+    <div class="username"><%= current_user.username %></div>
+    <div class="member-since">joined <%= time_ago_in_words(current_user.created_at) %> ago</div>
+  </div>
+</div>

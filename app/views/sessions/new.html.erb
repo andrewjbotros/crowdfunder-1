@@ -1,31 +1,3 @@
 <% provide :page_title, "SignIn" %>
 
-<div class="form">
-<%= form_for :session, url: sessions_path, html: { class: "form-container" } do |f| %>
-  <legend class="form-title"><%= yield(:page_title) %></legend>
-
-  <div class="form-field">
-    <%= f.label "SigninID", for: "session_signin_id", class: "form-label" %>
-    <div class="form-control">
-      <%= f.text_field :signin_id, class: "form-input", placeholder: "Email or Username" %>
-    </div>
-  </div>
-
-  <div class="form-field">
-    <%= f.label :password, for: "user_password", class: "form-label" %>
-    <div class="form-control">
-      <%= f.password_field :password, class: "form-input",
-          placeholder: "Enter your password" %>
-    </div>
-  </div>
-
-  <div class="form-field">
-    <div class="form-label"></div>
-    <div class="form-control">
-      <%= f.submit yield(:page_title), class: "form-btn" %>
-      <%= link_to 'Back', :back, class: "form-btn" %>
-    </div>
-  </div>
-
-<% end %>
-</div>
+<%= render 'form', title: yield(:page_title) %>
