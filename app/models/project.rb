@@ -5,6 +5,9 @@ class Project < ActiveRecord::Base
   has_many :breakpoints, dependent: :destroy
   accepts_nested_attributes_for :breakpoints
 
+  has_many :taggings
+  has_many :tags, through: :taggings
+
   has_many :pledges, through: :breakpoints
 
   has_many :backers, through: :pledges, source: 'user'
@@ -71,6 +74,29 @@ class Project < ActiveRecord::Base
 
   def percent_complete
     ((total_pledged.to_f / goal.to_f) * 100).to_i
+  end
+
+  def expired?
+    where("finish_date < ?", Time.now)
+  end
+
+   def tag_list
+    tags.map(&:name).join(", ")
+  end
+
+  def tag_list=(names)
+    self.tags = names.split(", ").map do |n|
+      Tag.where(name: n.strip).first_or_create!
+    end
+  end
+
+  def self.tagged_with(name)
+    Tag.where(:name => name).take!.projects
+  end
+
+  def self.tag_counts
+    Tag.select("tags.id, tags.name, count(taggings.tag_id) as count").
+    joins(:taggings).group("taggings.tag_id, tags.id, tags.name")
   end
 
 private

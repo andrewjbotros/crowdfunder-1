@@ -15,5 +15,7 @@ Crowdfunder::Application.routes.draw do
     resources :projects, controller: "users/projects"
   end
 
+  get 'tags/:tag', to: 'projects#index', as: :tag
+
   root      'welcome#index'
 end
