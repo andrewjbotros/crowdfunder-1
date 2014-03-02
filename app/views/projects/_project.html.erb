@@ -2,6 +2,6 @@
   <%= link_to project.name, project, class: "project-title" %>
   <small class="owner">by <%= link_to project.owner.username, project.owner %></small>
   <%= image_tag '/assets/default-project-thumbnail.jpg', class: "project-thumbnail" %>
-  <div class="progress" data-percent-complete="<%= project.percent_complete %>"></div>
+  <div class="project-progress" data-percent-complete="<%= project.percent_complete %>"></div>
   <div class="description"><%= markdown(project.description) %></div>
 </div>

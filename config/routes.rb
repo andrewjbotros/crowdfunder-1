@@ -11,7 +11,9 @@ Crowdfunder::Application.routes.draw do
   resources :sessions, only: [:create]
 
   get 'signup'          =>    'users#new',                  as: :signup
-  resources :users
+  resources :users do
+    resources :projects, controller: "users/projects"
+  end
 
   root      'welcome#index'
 end
