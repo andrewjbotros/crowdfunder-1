@@ -3,6 +3,8 @@
 <div id="project-<%= project.id %>" class="project">
   <div class="project-name"><%= project.name %></div>
   <div class="project-owner">by <%= project.owner.username %></div>
+  <% project.tags do |tag| %>
+  <% end %>
 
   <div class="project-progress">
 
