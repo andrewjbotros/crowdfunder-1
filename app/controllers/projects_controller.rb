@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def index
-    @projects = Project.all
+    @projects = Project.all.active
   end
 
   def show
@@ -51,7 +51,7 @@ private
   end
 
   def project_param
-    params.require(:project).permit(:name, :description, :goal, :start_date, :finish_date)
+    params.require(:project).permit(:name, :description, :goal, :start_date, :finish_date, :tag_list)
   end
 
 end
