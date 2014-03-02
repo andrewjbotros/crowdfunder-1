@@ -1,14 +1,16 @@
 @import 'mixin';
 @import 'color';
 
-@mixin form() {
-  .form-container {
+@mixin form($background) {
+  padding: 20px 40px;
+  background: $background;
 
+  .form-container {
     display: block;
     margin: 0 auto;
     padding: 20px 40px;
     width: 600px;
-    background: rgba(255, 255, 255, 1);
+    background: $white;
 
     legend.form-title {
       margin-bottom: 20px;
@@ -53,9 +55,9 @@
         }
       }
       textarea {
+        height: 20em;
         vertical-align: top;
         resize: vertical;
-        height: 20em;
       }
       select {
         width: 32.5%;
@@ -75,8 +77,8 @@
       .field_with_errors {
         display: inline-block;
         .form-label {
-          font-weight: 400;
           color: $red - 100;
+          font-weight: 400;
         }
       }
       .form-control .field_with_errors {
@@ -89,4 +91,4 @@
   }
 }
 
-.form { @include form; }
+.form { @include form($white); }

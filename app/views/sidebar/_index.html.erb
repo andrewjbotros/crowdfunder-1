@@ -1,0 +1,10 @@
+<div id="site-menu">
+  <span class="fa fa-bars toggle-btn"></span>
+  <%= link_to site_name, root_path, class: 'site-name' %>
+
+  <% if signed_in? %>
+    <%= render 'sidebar/user' %>
+  <% else %>
+    <%= render 'sidebar/guest' %>
+  <% end %>
+</div>

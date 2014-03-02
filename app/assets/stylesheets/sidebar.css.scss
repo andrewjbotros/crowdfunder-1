@@ -1,0 +1,110 @@
+@import 'color';
+@import 'mixin';
+
+$menu-width: 230px;
+$border-width: 30px;
+
+#site-menu {
+  @include shadow(1px, 0px, 6px, -2px, rgba(40, 40, 40, 0.5));
+  position: fixed;
+  left: $border-width - $menu-width;
+  z-index: 10;
+  display: block;
+  padding-right: $border-width;
+  width: $menu-width;
+  height: 100%;
+  background: $white;
+
+  .toggle-btn {
+    @include animate;
+    position: absolute;
+    top: 6px;
+    right: 5px;
+    background: $white;
+    color: $black + 50;
+    text-shadow: 0 0 2px rgba(40, 40, 40, 0.2);
+    font-size: 1.5em;
+    &:hover { color: $blue; }
+  }
+
+  .site-name {
+    display: block;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    width: $menu-width - $border-width;
+    color: $black;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 0 2px rgba(40, 40, 40, 0.2);
+    letter-spacing: -2px;
+    font-weight: 800;
+    font-size: 1.5em;
+    &:hover {
+      background: $blue;
+      color: $white;
+    }
+  }
+
+  .menu {
+    position: relative;
+    display: block;
+    margin-bottom: 10px;
+    padding-left: 25px;
+    width: 100%;
+    li {
+      position: relative;
+      display: block;
+      .btn { @include btn($white - 30); }
+      .wide{ width: 143px;}
+    }
+  }
+  .menu.inline  {
+    li { display: inline-block!important; }
+  }
+
+  .tagline {
+    position: relative;
+    display: block;
+    margin-right: 30px;
+    margin-left: 25px;
+    font-size: 0.8em;
+  }
+
+  .user-profile {
+    display: block;
+    margin: 0 auto;
+    width: 160px;
+    text-align: center;
+
+    .title {
+      color:  $black;
+      display: block;
+      margin-top: 20px;
+      font-weight: 800;
+      font-size: 1.2em;
+    }
+    .title a{
+      color: $black + 20;
+      text-decoration: none;
+      &:hover {
+        color: $blue - 50;
+      }
+    }
+    .info {
+      padding: 10px 0px 50px;
+      background: $white;
+    }
+    .username {
+      margin-top: 10px;
+      margin-bottom: 5px;
+      color: $black;
+      font-weight: 600;
+      font-size: 2em;
+    }
+    .member-since {
+      color: $black + 60;
+      font-size: 0.8em;
+    }
+  }
+
+}
