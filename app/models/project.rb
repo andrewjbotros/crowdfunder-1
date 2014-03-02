@@ -91,7 +91,7 @@ class Project < ActiveRecord::Base
   end
 
   def self.tagged_with(name)
-    Tag.where(name: name).take!.projects
+    Tag.where(:name => name).take!.projects
   end
 
   def self.tag_counts

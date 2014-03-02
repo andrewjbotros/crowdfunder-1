@@ -13,7 +13,7 @@ Crowdfunder::Application.routes.draw do
   get 'signup'          =>    'users#new',                  as: :signup
   resources :users
 
-  get 'tags/:tag', to: 'articles#index', as: :tag
+  get 'tags/:tag', to: 'projects#index', as: :tag
 
   root      'welcome#index'
 end
