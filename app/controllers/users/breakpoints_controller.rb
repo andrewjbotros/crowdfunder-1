@@ -1,7 +1,14 @@
-class BreakpointsController < ApplicationController
-  before_action :signin_required, except: [:show]
-  before_action :find_project
-  before_action :set_breakpoint, only: [:edit, :update, :destroy]
+class Users::BreakpointsController < ApplicationController
+  before_action :signin_required
+  before_action :set_project
+  before_action :set_breakpoint, only: [:show, :edit, :update, :destroy]
+
+  def index
+    @breakpoints = @project.breakpoints
+  end
+
+  def show
+  end
 
   def new
     @breakpoint = @project.breakpoints.new
@@ -36,11 +43,8 @@ class BreakpointsController < ApplicationController
 
 private
 
-  def find_project
-    @project = Project.find(params[:project_id])
-    unless self?(@project.owner)
-      flash[:info] = "You are not authroized to perform the action"
-    end
+  def set_project
+    @project = current_user.projects.find(params[:project_id])
   end
 
   def set_breakpoint

@@ -42,12 +42,3 @@
 </div>
 
 <%= @project.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ').html_safe %>
-
-<% if @project.owner == current_user %>
-  <p><%= link_to "Edit this Project", edit_project_path(@project) %></P>
-  <p><%= link_to "Delete this Project", @project, method: :delete %></P>
-<% end %>
-
-<% if @project.owner == current_user %>
-<%= link_to "Create a New Breakpoint", new_project_breakpoint_path(@project) %>
-<% end %>

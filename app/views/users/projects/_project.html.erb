@@ -2,13 +2,13 @@
 
   <% if self?(project.owner) %>
   <ul class="control">
-    <li><%= link_to '', project_breakpoints_path(project), class: "fa fa-signal" %></li>
+    <li><%= link_to '', user_project_breakpoints_path(current_user, project), class: "fa fa-signal" %></li>
     <li>
-      <%= link_to '', new_project_breakpoint_path(project), class: "fa fa-plus-square" %>
+      <%= link_to '', new_user_project_breakpoint_path(current_user, project), class: "fa fa-plus-square" %>
     </li>
-    <li><%= link_to '', edit_project_path(project), class: "fa fa-pencil-square" %></li>
+    <li><%= link_to '', edit_user_project_path(current_user, project), class: "fa fa-pencil-square" %></li>
     <li>
-      <%= link_to '', project, method: :delete, class: "fa fa-times",
+      <%= link_to '', [current_user, project], method: :delete, class: "fa fa-times",
             confirm: "Are you sure you want to remove this project!?" %>
     </li>
   </ul>
