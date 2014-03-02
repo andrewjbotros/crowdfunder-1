@@ -1,17 +1,13 @@
-<div class="user-profile">
-  <h1 class="title">
-    <%= link_to 'Profile', current_user %>
-    <%= link_to '', edit_user_path(current_user), class: "fa fa-info-circle" %>
-  </h1>
-  <div class="info">
-    <%= image_tag current_user.gravatar(140), class: 'gravatar' %>
-    <div class="username"><%= current_user.username %></div>
-    <div class="member-since">joined <%= time_ago_in_words(current_user.created_at) %> ago</div>
-  </div>
-</div>
+<%= render 'sidebar/user_profile' %>
 
 <ul class="menu">
+  <% if current_user.projects.any? %>
+    <li><%= link_to 'My Projects', '#', class: "btn wide" %></li>
+  <% else %>
+    <li><%= link_to 'Create a Project', '#', class: "btn wide" %></li>
+  <% end %>
+  <% if current_user.backed_projects.any? %>
+    <li><%= link_to 'Backed Projects', '#', class: "btn wide" %></li>
+  <% end %>
   <li><%= link_to 'Browse Projects', projects_path, class: "btn wide" %></li>
-  <li><%= link_to 'My Projects', '#', class: "btn wide" %></li>
-  <li><%= link_to 'Backed Projects', '#', class: "btn wide" %></li>
 </ul>

@@ -8,15 +8,13 @@ function SiteMenu() {
 
   function currentlyHidden() {
     return self.offset().left < 0
-  }
-
+  };
   function slideAnimate(position, duration) {
     duration = duration || 1000;
     self.animate({
       left: position
     }, duration, 'easeOutCubic');
-  }
-
+  };
   function slideToggle() {
     if (currentlyHidden()) {
       slideAnimate('0');
@@ -26,18 +24,8 @@ function SiteMenu() {
     }
   };
 
-  function clickableArea() {
-    return toggleBtn;
-  }
-
-  function clickEvent(btn) {
-    btn.on('click', function() {
-      // $(this).unbind('click');
-      slideToggle();
-      // clickEvent(clickableArea());
-    })
-  }
-
-  clickEvent(clickableArea());
+  toggleBtn.on('click', function() {
+    slideToggle();
+  });
 
 }
