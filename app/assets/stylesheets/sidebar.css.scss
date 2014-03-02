@@ -60,7 +60,9 @@ $menu-width: 240px + $border-width;
     }
   }
   .menu.inline  {
-    li { display: inline-block!important; }
+    li {
+      display: inline-block!important;
+    }
   }
 
   .tagline {
