@@ -2,7 +2,12 @@
 
 <div class="projects-page">
   <legend class="title">All Projects</legend>
-  <%= render @projects %>
+
+  <ul class="projects">
+  <% @projects.each do |p| %>
+    <li class="item"><%= render p %></li>
+  <% end %>
+  </ul>
 </div>
 
 

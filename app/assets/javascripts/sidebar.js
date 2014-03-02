@@ -20,7 +20,7 @@ function SiteMenu() {
       slideAnimate('0');
     }
     else {
-      slideAnimate('-260');
+      slideAnimate('-240');
     }
   };
 
