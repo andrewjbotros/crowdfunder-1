@@ -36,7 +36,14 @@
 	<div class="form-field">
 		<%= f.label :finish_date, for: 'project_finish_date', class: "form-label" %>
 		<div class="form-control">
-			<%= f.date_select :finish_date, class: "form-input", default: 1.day.from_now, start_year: Time.now.year, end_year: Time.now.year + 1 %>
+			<%= f.date_select :finish_date, class: "form-input" %>
+		</div>
+	</div>
+
+	<div class="form-field">
+		<%= f.label :tag_list, "Enter Tags Seperated by Commas", for: 'project_tag_list', class: "form-label" %>
+		<div class="form-control">
+			<%= f.text_field :tag_list, class: "form-input" %>
 		</div>
 	</div>
 
