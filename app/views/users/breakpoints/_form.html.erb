@@ -1,5 +1,5 @@
 <div class="form">
-<%= form_for [@project, @breakpoint], html: { class: "form-container" } do |f| %>
+<%= form_for [current_user, @project, @breakpoint], html: { class: "form-container" } do |f| %>
   <legend class="title"><%= title %></legend>
 
   <%= render 'alerts/error_message', object: @breakpoint %>
