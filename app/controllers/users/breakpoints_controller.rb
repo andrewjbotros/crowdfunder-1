@@ -44,8 +44,7 @@ class Users::BreakpointsController < ApplicationController
 private
 
   def set_project
-    @user = User.find(params[:user_id])
-    @project = @user.projects.find(params[:project_id])
+    @project = Project.find(params[:project_id])
   end
 
   def set_breakpoint
