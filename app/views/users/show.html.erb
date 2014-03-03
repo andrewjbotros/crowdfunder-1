@@ -1,62 +1,6 @@
 <% provide :page_title, @user.username %>
 
-
-<div class="user-page">
-
-  <div class="user-feed">
-    <h1 class="title">Activities</h1>
-
-    <div class="own-projects">
-    <% if @user.projects.any? %>
-
-      <h2 class="title">Own Projects - <%= @user.projects.active.count %></h2>
-
-      <ul class="feed">
-        <% @user.projects.each do |p| %>
-          <li><%= render "activities/user_profile/#{p.class.to_s.underscore}", project: p %></li>
-        <% end %>
-      </ul>
-
-    <% else %>
-
-      <% if self?(@user) %>
-      <h2 class="message">
-        Have an idea? <br>
-        <%= link_to 'Create a project', new_project_path, class: 'btn' %>
-      </h2>
-      <% else %>
-      <h2 class="message"><%= @user.username %> is still trying to come up with an idea</h2>
-      <% end %>
-
-    <% end %>
-    </div>
-
-    <div class="backed-projects">
-    <% if @user.pledges.any? %>
-
-      <h2 class="title">Backed Projects - Total $ <%= @user.total_pledged %> </h2>
-
-      <ul class="feed">
-        <% @user.pledges.each do |p| %>
-          <li><%= render "activities/user_profile/#{p.class.to_s.underscore}", pledge: p %></li>
-        <% end %>
-      </ul>
-
-    <% else %>
-
-      <% if self?(@user) %>
-      <h2 class="message">
-        You haven't backed any project <br>
-        <%= link_to 'Find a project you like', projects_path, class: "btn" %>
-      </h2>
-      <% else %>
-      <h2 class="message"><%= @user.username %> has not yet backed any projects!</h2>
-      <% end %>
-
-    <% end %>
-    </div>
-
-  </div>
-
+<div class="user-activities">
+  <h1 class="title">Activities</h1>
 
 </div>

@@ -2,7 +2,7 @@
 @import 'color';
 
 @mixin form($background) {
-  padding: 20px 40px;
+  padding: 60px;
   background: $background;
 
   .form-container {
@@ -10,12 +10,15 @@
     margin: 0 auto;
     padding: 20px 40px;
     width: 600px;
+    border: 1px solid $black;
+    border-radius: 10px;
     background: $white;
 
     legend.form-title {
       margin-bottom: 20px;
+      padding: 5px 10px;
       width: 100%;
-      color: rgba(80, 80, 80, 1);
+      color: $black;
       text-align: right;
       font-weight: 800;
       font-size: 2em;
@@ -23,6 +26,7 @@
 
     .form-field {
       width: 100%;
+      margin-bottom: 5px;
     }
 
     .form-label,
@@ -36,7 +40,6 @@
       text-align: right;
       font-weight: 100;
       font-size: 0.8em;
-
     }
 
     .form-control {
@@ -47,9 +50,9 @@
       textarea {
         @include animate;
         @include black;
-        padding: 5px 10px;
+        padding: 10px 10px;
         width: 100%;
-        border: 1px solid rgba(80, 80, 80, 0.8);
+        border: 1px solid $black;
 
         &:hover, &:focus, &:active {
           outline: none;

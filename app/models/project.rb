@@ -28,7 +28,7 @@ class Project < ActiveRecord::Base
   validate  :verify_finish_date, on: :create
 
   scope :active,    -> { where("start_date < ? AND finish_date > ?", Time.now, Time.now) }
-  scope :inactive,  -> { where("finish_date < ?", Time.now) }
+  scope :expired,  -> { where("finish_date < ?", Time.now) }
 
   def funded?
     percent_complete >= 100 ? true : false
@@ -56,15 +56,21 @@ class Project < ActiveRecord::Base
 
   def remaining_time
     hours = remaining_hours
-    if hours > 24
-      return sprintf("%.0f", hours / 24) + "day".pluralize((hours / 24).to_i)
+    if hours < 0
+      return "Expired"
+    elsif hours > 24
+      return sprintf("%.0f", hours / 24) << " day".pluralize((hours / 24).to_i) << " left"
     else
-      sprintf("%.0f", hours) + "hour".pluralize(hours)
+      return sprintf("%.0f", hours) << " hour".pluralize(hours) << " left"
     end
   end
 
   def remaining_days
-    (remaining_hours / 24).round(1)
+    if remaining_hours < 0
+      return "0"
+    else
+      return (remaining_hours / 24).round(1)
+    end
   end
 
   def remaining_hours
@@ -76,11 +82,7 @@ class Project < ActiveRecord::Base
     ((total_pledged.to_f / goal.to_f) * 100).to_i
   end
 
-  def expired?
-    where("finish_date < ?", Time.now)
-  end
-
-   def tag_list
+  def tag_list
     tags.map(&:name).join(", ")
   end
 

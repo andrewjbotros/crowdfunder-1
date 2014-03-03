@@ -1,58 +1,8 @@
 @import 'color';
 @import 'mixin';
 
-.project-feed {
-  margin-bottom: 40px;
+.project {
 
-  .control {
-    float: right;
-    li {
-      display: inline-block;
-      a {
-        color: $black + 50;
-        text-decoration: none;
-        &:hover {
-          color: $blue - 50;
-        }
-      }
-    }
-  }
-
-  .project-name {
-    color: $blue - 50;
-    text-decoration: none;
-    font-weight: 800;
-    font-size: 1em;
-  }
-
-  .created {
-    color: $black + 50;
-    font-size: 0.8em;
-  }
-
-  .project-dashboard {
-    margin-top: 10px;
-
-    .goal {
-      margin-bottom: 10px;
-      color: $black + 50;
-      font-weight: 600;
-    }
-
-    canvas {
-      margin-bottom: -90px;
-      width: 100px;
-      height: 200px;
-    }
-
-    .backers-knob,
-    .totals-knob,
-    .time-to-go-knob {
-      z-index: 5;
-      display: inline-block;
-      font-size: 12px!important;
-    }
-  }
 }
 
 .pledge-feed {

@@ -1,6 +1,5 @@
-<div class="project-feed">
+<div class="project">
 
-  <% if self?(project.owner) %>
   <ul class="control">
     <li><%= link_to '', user_project_breakpoints_path(current_user, project), class: "fa fa-signal" %></li>
     <li>
@@ -12,15 +11,15 @@
             confirm: "Are you sure you want to remove this project!?" %>
     </li>
   </ul>
-  <% end %>
 
   <%= link_to project.name, project, class: "project-name" %>
-  <small class="created">
+  <small class="time">
+    <%= project.remaining_time %> |
     created <%= time_ago_in_words(project.created_at) %> ago
   </small>
-  <div class="project-dashboard">
+  <div class="dashboard">
     <div class="goal">
-      <span class="fa fa-dot-circle-o"></span>
+      <small class="label">Received:</small> $<%= project.total_pledged %> /
       <small class="label">Goal:</small> $<%= project.goal %>
     </div>
 

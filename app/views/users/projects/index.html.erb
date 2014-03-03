@@ -1,6 +1,8 @@
 <ul class="users-projects">
-<legend class="title">My Own Projects</legend>
-<% @projects.each do |p| %>
-  <li> <%= render 'users/projects/project', project: p %></li>
-<% end %>
+  <legend class="title">
+    Own Projects - <%= current_user.projects.active.count %> Acitve
+  </legend>
+  <% @projects.each do |p| %>
+    <li> <%= render 'users/projects/project', project: p %></li>
+  <% end %>
 </ul>

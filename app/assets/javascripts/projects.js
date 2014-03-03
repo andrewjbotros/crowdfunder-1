@@ -2,7 +2,7 @@ $(document).on('page:change', function() {
 
   // if under project show page
 
-  if ($('.project-feed').length) {
+  if ($('.project').length) {
 
     $('.backers-knob').knob({
       'readOnly': true,
